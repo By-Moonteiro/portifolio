@@ -5,7 +5,7 @@ import { Mail } from "lucide-react";
 
 export default function Contact() {
   return (
-    <section id="contato" className="relative z-10 py-32 px-6">
+    <section id="contato" className="relative z-10 py-20 px-6">
       <div className="max-w-5xl mx-auto flex flex-col gap-12">
 
         {/* Header */}

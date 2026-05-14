@@ -44,7 +44,7 @@ export default function Projects() {
 
   return (
     <>
-      <section id="projetos" className="relative z-10 py-32 px-6">
+      <section id="projetos" className="relative z-10 py-20 px-6">
         <div className="max-w-5xl mx-auto flex flex-col gap-12">
 
           {/* Header da seção */}

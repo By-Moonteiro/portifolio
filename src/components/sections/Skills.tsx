@@ -83,7 +83,7 @@ function Stars({ count }: { count: number }) {
 
 export default function Skills() {
   return (
-    <section id="skills" className="relative z-10 py-32 px-6">
+    <section id="skills" className="relative z-10 py-20 px-6">
       <div className="max-w-5xl mx-auto flex flex-col gap-12">
 
         {/* Header */}
