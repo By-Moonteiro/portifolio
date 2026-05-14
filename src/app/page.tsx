@@ -7,6 +7,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { getGithubStats, getTotalCommits } from "@/lib/github";
 import GithubActivity from "@/components/sections/GithubActivity";
+import About from "../components/sections/About";
 
 export default async function Home() {
   const [commits, stats] = await Promise.all([
@@ -18,6 +19,7 @@ export default async function Home() {
     <main>
       <Header />
       <Hero commits={commits} />
+      <About />
       <Projects />
       <Skills />
       <GithubActivity

@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Home, FolderGit2, Zap, Briefcase, Mail } from "lucide-react";
+import { Home, FolderGit2, Zap, Briefcase, Mail, User } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 
 const navLinks = [
   { label: "home", href: "#", icon: <Home size={16} /> },
+  { label: "sobre", href: "#sobre", icon: <User size={16} /> },
   { label: "projetos", href: "#projetos", icon: <FolderGit2 size={16} /> },
   { label: "skills", href: "#skills", icon: <Zap size={16} /> },
   { label: "github", href: "#github", icon: <FaGithub size={16} /> },
@@ -22,7 +23,7 @@ export default function Header() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 80);
       if (window.scrollY < 100) { setActive("#"); return; }
-      const sections = ["projetos", "skills", "experiencia", "contato"];
+      const sections = ["sobre", "projetos", "skills", "github", "experiencia", "contato"];
       for (const id of [...sections].reverse()) {
         const el = document.getElementById(id);
         if (el && window.scrollY >= el.offsetTop - 120) {
@@ -44,7 +45,6 @@ export default function Header() {
 
   return (
     <>
-      {/* WM_ fixo esquerda */}
       <div className="fixed top-0 left-0 z-50 px-8 h-16 flex items-center">
         <a
           href="#"
