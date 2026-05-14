@@ -1,4 +1,4 @@
-@import "tailwindcss";
+eu@import "tailwindcss";
 
 html {
   scroll-behavior: smooth;
@@ -7,7 +7,7 @@ html {
 :root {
   --background: #0a0a0a;
   --foreground: #f0f0f0;
-  --foreground-muted: #6b6b6b;
+  --foreground-muted: #9b9b9b;
   --accent: #a78bfa;
   --accent-glow: rgba(167, 139, 250, 0.15);
   --border: rgba(240, 240, 240, 0.08);
