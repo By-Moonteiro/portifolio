@@ -17,7 +17,7 @@ export default function About() {
         <div className="flex flex-col gap-6">
           {[
             "Entrei em desenvolvimento quase por acidente. Vi um amigo mexendo no Arch Linux, achei fascinante, e fui pra Engenharia de Computação na UEFS. Um ano depois mudei pra Engenharia de Software porque fazia mais sentido com o que eu queria de verdade.",
-            "Em outubro de 2024 comecei a programar de fato e descobri que amava. Não pela perspectiva de emprego ou salário, mas pelo ato em si. Desde então não parei.",
+            "Em outubro de 2025 comecei a programar de fato e descobri que amava. Não pela perspectiva de emprego ou salário, mas pelo ato em si. Desde então não parei.",
             "Sou autodidata, ansioso, curioso e honesto ao ponto de me incomodar quando finjo saber algo que não sei. Prefiro deixar claro meu nível do que inflar um currículo. Ainda estou aprendendo e não tenho problema nenhum em dizer isso.",
             "Meu objetivo não é chegar a sênior ou ganhar bem. É ser útil. Pra um time, pra um projeto, pra alguém que precise de ajuda. E aprender com quem sabe mais do que eu enquanto isso.",
           ].map((paragraph, i) => (
