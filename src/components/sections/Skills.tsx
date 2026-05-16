@@ -4,6 +4,8 @@ import {
   SiTypescript, SiJavascript, SiNestjs, SiNodedotjs,
   SiFastify, SiPrisma, SiReact, SiNextdotjs, SiTailwindcss,
   SiPostgresql, SiDocker, SiGithubcopilot, SiOpenai,
+  SiGit,
+  SiSwagger,
 } from "react-icons/si";
 import { RiOpenaiFill } from "react-icons/ri";
 import { FaStar, FaRegStar } from "react-icons/fa";
@@ -37,6 +39,7 @@ const skills: SkillGroup[] = [
       { name: "Node.js", icon: <SiNodedotjs />, stars: 4 },
       { name: "Fastify", icon: <SiFastify />, stars: 3 },
       { name: "Prisma", icon: <SiPrisma />, stars: 4 },
+      { name: "Swagger", icon: <SiSwagger />, stars: 3 },
     ],
   },
   {
@@ -57,6 +60,7 @@ const skills: SkillGroup[] = [
     category: "Infra",
     skills: [
       { name: "Docker", icon: <SiDocker />, stars: 3 },
+      { name: "Git", icon: <SiGit />, stars: 4 },
     ],
   },
   {

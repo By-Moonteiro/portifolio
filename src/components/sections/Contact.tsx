@@ -37,14 +37,14 @@ export default function Contact() {
 
           <div className="flex flex-col gap-4">
             <a
-              href="mailto:owagnerlucas0@gmail.com"
+              href="mailto:moonteiro.dev@gmail.com"
               className="flex items-center gap-3 font-mono text-sm transition-all duration-200 w-fit"
               style={{ color: "var(--foreground-muted)" }}
               onMouseEnter={e => (e.currentTarget.style.color = "var(--foreground)")}
               onMouseLeave={e => (e.currentTarget.style.color = "var(--foreground-muted)")}
             >
               <Mail size={15} style={{ color: "var(--accent)" }} />
-              owagnerlucas0@gmail.com
+              moonteiro.dev@gmail.com
             </a>
 
             <a

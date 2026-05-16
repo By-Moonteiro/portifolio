@@ -105,7 +105,7 @@ export default function GithubActivity({ followers, public_repos, contributions,
 
   const stats = [
     { label: "Contribuições", value: totalContributions.toLocaleString("pt-BR"), icon: <FaGithub size={16} /> },
-    { label: "Repositórios", value: public_repos, icon: <GitFork size={16} /> },
+    { label: "Repositórios Públicos", value: public_repos, icon: <GitFork size={16} /> },
     { label: "Seguidores", value: followers, icon: <Users size={16} /> },
   ];
 

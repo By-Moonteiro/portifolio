@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
-const TYPING_TEXT = "Software Developer";
+const TYPING_TEXT = "Full Stack Developer";
 const TYPING_SPEED = 80;
 
 
