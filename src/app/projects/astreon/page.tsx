@@ -1,9 +1,11 @@
+"use client"
+
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
 import { ExternalLink, ArrowLeft } from "lucide-react";
 import Image from 'next/image'
 
-export default function MoonFitPage() {
+export default function AstreonPage() {
   return (
     <main className="relative z-10 min-h-screen px-6 py-24">
       <div className="max-w-3xl mx-auto flex flex-col gap-16">
@@ -54,7 +56,7 @@ export default function MoonFitPage() {
               lineHeight: 1,
             }}
           >
-            MoonFit
+            Astreon
           </h1>
 
           <p className="text-sm leading-relaxed max-w-xl" style={{ color: "var(--foreground-muted)" }}>
@@ -64,7 +66,7 @@ export default function MoonFitPage() {
 
           <div className="flex items-center gap-6">
             <a
-              href="https://github.com/By-Moonteiro/moon-fit"
+              href="https://github.com/By-Moonteiro/astreon"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 font-mono text-xs transition-colors duration-200"
@@ -74,7 +76,7 @@ export default function MoonFitPage() {
               Repositório
             </a>
             <a
-              href="https://moon-fit.vercel.app/"
+              href="https://astreon.app/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 font-mono text-xs transition-colors duration-200"
@@ -105,10 +107,54 @@ export default function MoonFitPage() {
 
         <Divider />
 
+        {/* Preview */}
+        <Section title="Preview">
+          <p className="text-sm leading-relaxed" style={{ color: "var(--foreground-muted)" }}>
+            Algumas telas do Astreon em funcionamento.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+            {[
+              { src: "/projects/moonfit/preview-1.png", alt: "Tela de login" },
+              { src: "/projects/moonfit/preview-2.png", alt: "Dashboard" },
+              { src: "/projects/moonfit/preview-3.png", alt: "Modo treino" },
+              { src: "/projects/moonfit/preview-4.png", alt: "Histórico" },
+            ].map((img) => (
+              <div
+                key={img.src}
+                className="relative rounded-sm overflow-hidden"
+                style={{
+                  border: "1px solid var(--border)",
+                  aspectRatio: "16/9",
+                }}
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover object-top transition-all duration-500"
+                  style={{ filter: "brightness(0.9)" }}
+                  onMouseEnter={e => (e.currentTarget.style.filter = "brightness(1)")}
+                  onMouseLeave={e => (e.currentTarget.style.filter = "brightness(0.9)")}
+                />
+                <div
+                  className="absolute bottom-0 left-0 right-0 px-3 py-2"
+                  style={{ backgroundColor: "rgba(10,10,10,0.7)", backdropFilter: "blur(4px)" }}
+                >
+                  <span className="font-mono text-xs" style={{ color: "var(--foreground-muted)" }}>
+                    {img.alt}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Section>
+
+        <Divider />
+
         {/* O Problema */}
         <Section title="O Problema">
           <p style={{ color: "var(--foreground-muted)" }} className="text-sm leading-relaxed">
-            O MoonFit nasceu de uma dor real e diária — fichas de treino anotadas no WhatsApp
+            O Astreon nasceu de uma dor real e diária — fichas de treino anotadas no WhatsApp
             que se perdiam no histórico, sem registro de cargas, repetições ou evolução semana a semana.
             Sem controle de descanso entre séries, sem histórico de tempo treinando, sem saber o que funcionou.
           </p>
@@ -133,7 +179,7 @@ export default function MoonFitPage() {
         {/* O que é */}
         <Section title="O que é">
           <p className="text-sm leading-relaxed" style={{ color: "var(--foreground-muted)" }}>
-            MoonFit é um gerenciador de fichas de treino simples e completo. Organiza treinos,
+            Astreon é um gerenciador de fichas de treino simples e completo. Organiza treinos,
             registra progresso e mantém o histórico — sem depender de WhatsApp, bloco de notas ou memória.
             Planejado desde o início como produto multi-tenant, pensando em atender tanto iniciantes
             quanto instrutores e professores de academia.

@@ -7,14 +7,14 @@ import type { Project } from "./projects/types";
 
 const projects: Project[] = [
   {
-    name: "MoonFit",
-    slug: "moonfit",
+    name: "Astreon",
+    slug: "astreon",
     description: "Gerenciador de fichas de treino pensado como produto real — multi-tenant, com histórico de evolução e estrutura que cresce junto com o usuário.",
     status: "WIP",
     year: 2026,
     stack: ["NestJS", "TypeScript", "PostgreSQL", "Prisma", "Docker", "React", "Tailwind"],
-    repo: "https://github.com/By-Moonteiro/moon-fit",
-    deploy: "https://moon-fit.vercel.app/",
+    repo: "https://github.com/By-Moonteiro/astreon",
+    deploy: "https://astreon.app/",
     details: {
       description: "Gerenciador de fichas de treino pensado como produto real — multi-tenant, com histórico de evolução e estrutura que cresce junto com o usuário.",
       problem: "Em breve.",
