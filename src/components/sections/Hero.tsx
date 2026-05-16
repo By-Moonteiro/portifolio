@@ -27,11 +27,7 @@ function useTypingEffect(text: string, speed: number) {
   return { displayed, done };
 }
 
-interface HeroProps {
-  commits: number;
-}
-
-export default function Hero({ commits }: HeroProps) {
+export default function Hero() {
   const { displayed, done } = useTypingEffect(TYPING_TEXT, TYPING_SPEED);
 
   return (
@@ -96,7 +92,7 @@ export default function Hero({ commits }: HeroProps) {
               opacity: 0.4,
             }}
           >
-            Download CV
+            Baixar CV
           </button>
 
           <a
@@ -145,22 +141,6 @@ export default function Hero({ commits }: HeroProps) {
             <FaLinkedin size={14} />
             linkedin.com/in/moonteiro
           </a>
-
-          {/* Status */}
-          <div className="flex items-center gap-2 font-mono text-xs">
-            <span
-              className="inline-block w-1.5 h-1.5 rounded-full shrink-0"
-              style={{
-                backgroundColor: "var(--accent)",
-                animation: "pulse 1.5s ease-in-out infinite",
-                boxShadow: "0 0 6px rgba(167,139,250,0.8)",
-              }}
-            />
-            <span style={{ color: "var(--foreground-muted)" }}>
-              <span style={{ color: "var(--accent)" }}>{commits.toLocaleString("pt-BR")}</span>
-              {" commits públicos — ativo no GitHub"}
-            </span>
-          </div>
 
         </div>
       </div>
