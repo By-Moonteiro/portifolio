@@ -5,20 +5,19 @@ import Experience from "@/components/sections/Experience";
 import Contact from "@/components/sections/Contact";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import { getGithubStats, getTotalCommits } from "@/lib/github";
+import { getGithubStats } from "@/lib/github";
 import GithubActivity from "@/components/sections/GithubActivity";
 import About from "../components/sections/About";
 
 export default async function Home() {
-  const [commits, stats] = await Promise.all([
-    getTotalCommits("By-Moonteiro"),
+  const [stats] = await Promise.all([
     getGithubStats("By-Moonteiro"),
   ]);
 
   return (
     <main>
       <Header />
-      <Hero commits={commits} />
+      <Hero />
       <About />
       <Projects />
       <Skills />
