@@ -1,14 +1,18 @@
 "use client";
 
 import {
-  SiTypescript, SiJavascript, SiNestjs, SiNodedotjs,
+  SiTypescript, SiNestjs, SiNodedotjs,
   SiFastify, SiPrisma, SiReact, SiNextdotjs, SiTailwindcss,
-  SiPostgresql, SiDocker, SiGithubcopilot, SiOpenai,
+  SiPostgresql, SiDocker, SiGithubcopilot,
   SiGit,
   SiSwagger,
+  SiRender,
+  SiVercel,
+  SiShadcnui,
 } from "react-icons/si";
 import { RiOpenaiFill } from "react-icons/ri";
 import { FaStar, FaRegStar } from "react-icons/fa";
+import { VscVscode } from "react-icons/vsc";
 
 interface Skill {
   name: string;
@@ -29,7 +33,6 @@ const skills: SkillGroup[] = [
     category: "Linguagens de Programação",
     skills: [
       { name: "TypeScript", icon: <SiTypescript />, stars: 4 },
-      { name: "JavaScript", icon: <SiJavascript />, stars: 4 },
     ],
   },
   {
@@ -48,6 +51,7 @@ const skills: SkillGroup[] = [
       { name: "React", icon: <SiReact />, stars: 3 },
       { name: "Next.js", icon: <SiNextdotjs />, stars: 3 },
       { name: "Tailwind", icon: <SiTailwindcss />, stars: 3 },
+      { name: "Shadcn/ui", icon: <SiShadcnui />, stars: 3 },
     ],
   },
   {
@@ -57,18 +61,21 @@ const skills: SkillGroup[] = [
     ],
   },
   {
-    category: "Infra",
+    category: "Infra & Deploy",
     skills: [
       { name: "Docker", icon: <SiDocker />, stars: 3 },
       { name: "Git", icon: <SiGit />, stars: 4 },
+      { name: "Render", icon: <SiRender />, stars: 3 },
+      { name: "Vercel", icon: <SiVercel />, stars: 3 },
+      { name: "Neon", icon: <SiPostgresql />, stars: 3 },
     ],
   },
   {
-  category: "AI / Ferramentas",
+  category: "Ferramentas",
   skills: [
     { name: "GitHub Copilot", icon: <SiGithubcopilot />, stars: 3 },
     { name: "Claude", icon: <RiOpenaiFill />, stars: 4 },
-    { name: "ChatGPT", icon: <SiOpenai />, stars: 3 },
+    { name: "Visual Studio Code", icon: <VscVscode />, stars: 4 },
   ],
 },
 ];
