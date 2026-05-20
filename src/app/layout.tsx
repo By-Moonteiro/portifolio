@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Wagner Monteiro — Software Developer",
-  description: "Software Developer. TypeScript ecosystem — React, Node, Nest.",
+  title: "Wagner Monteiro — Full Stack Developer",
+  description: "Full Stack Developer. TypeScript ecosystem — React, Node, Nest.",
 };
 
 export default function RootLayout({

@@ -6,9 +6,9 @@ import { FaGithub } from "react-icons/fa";
 
 const navLinks = [
   { label: "home", href: "#", icon: <Home size={16} /> },
-  { label: "sobre", href: "#sobre", icon: <User size={16} /> },
   { label: "projetos", href: "#projetos", icon: <FolderGit2 size={16} /> },
   { label: "skills", href: "#skills", icon: <Zap size={16} /> },
+  { label: "sobre", href: "#sobre", icon: <User size={16} /> },
   { label: "github", href: "#github", icon: <FaGithub size={16} /> },
   { label: "experiência", href: "#experiencia", icon: <Briefcase size={16} /> },
   { label: "contato", href: "#contato", icon: <Mail size={16} /> },

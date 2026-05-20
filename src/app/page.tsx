@@ -18,9 +18,9 @@ export default async function Home() {
     <main>
       <Header />
       <Hero />
-      <About />
       <Projects />
       <Skills />
+      <About />
       <GithubActivity
         followers={stats.followers}
         public_repos={stats.public_repos}
