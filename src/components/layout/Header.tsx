@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Home, FolderGit2, Zap, Briefcase, Mail, User } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const navLinks = [
   { label: "home", href: "#", icon: <Home size={16} /> },
@@ -22,12 +23,31 @@ export default function Header() {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 80);
-      if (window.scrollY < 100) { setActive("#"); return; }
-      const sections = ["sobre", "projetos", "skills", "github", "experiencia", "contato"];
+
+      const atBottom =
+        window.innerHeight + window.scrollY >= document.body.offsetHeight;
+      if (atBottom) {
+        setActive("#contato");
+        return;
+      }
+
+      if (window.scrollY < 100) {
+        setActive("#");
+        return;
+      }
+      const sections = [
+        "projetos",
+        "skills",
+        "sobre",
+        "github",
+        "experiencia",
+        "contato",
+      ];
       for (const id of [...sections].reverse()) {
         const el = document.getElementById(id);
         if (el && window.scrollY >= el.offsetTop - 120) {
-          setActive(`#${id}`); return;
+          setActive(`#${id}`);
+          return;
         }
       }
       setActive("#");
@@ -38,7 +58,10 @@ export default function Header() {
 
   const handleNavClick = (href: string) => {
     setMenuOpen(false);
-    if (href === "#") { window.scrollTo({ top: 0, behavior: "smooth" }); return; }
+    if (href === "#") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
     const el = document.getElementById(href.replace("#", ""));
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
@@ -48,7 +71,10 @@ export default function Header() {
       <div className="fixed top-0 left-0 z-50 px-8 h-16 flex items-center">
         <a
           href="#"
-          onClick={e => { e.preventDefault(); handleNavClick("#"); }}
+          onClick={(e) => {
+            e.preventDefault();
+            handleNavClick("#");
+          }}
           className="font-mono text-sm font-bold"
           style={{ color: "var(--accent)" }}
         >
@@ -64,8 +90,9 @@ export default function Header() {
             backgroundColor: "rgba(10,10,10,0.8)",
             backdropFilter: "blur(16px)",
             border: "1px solid rgba(167,139,250,0.15)",
-            boxShadow: "0 4px 30px rgba(0,0,0,0.4), 0 0 0 1px rgba(167,139,250,0.05)",
-            opacity: scrolled ? 0.9 : 1,
+            boxShadow:
+              "0 4px 30px rgba(0,0,0,0.4), 0 0 0 1px rgba(167,139,250,0.05)",
+            opacity: scrolled ? 0.7 : 1,
           }}
         >
           {navLinks.map((link) => {
@@ -74,19 +101,30 @@ export default function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                onClick={e => { e.preventDefault(); handleNavClick(link.href); }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick(link.href);
+                }}
                 className="font-mono text-xs px-4 py-2 rounded-full transition-all duration-200"
                 style={{
                   color: isActive ? "var(--accent)" : "var(--foreground-muted)",
-                  backgroundColor: isActive ? "rgba(167,139,250,0.12)" : "transparent",
-                  textShadow: isActive ? "0 0 10px rgba(167,139,250,0.5)" : "none",
-                  boxShadow: isActive ? "inset 0 0 0 1px rgba(167,139,250,0.2)" : "none",
+                  backgroundColor: isActive
+                    ? "rgba(167,139,250,0.12)"
+                    : "transparent",
+                  textShadow: isActive
+                    ? "0 0 10px rgba(167,139,250,0.5)"
+                    : "none",
+                  boxShadow: isActive
+                    ? "inset 0 0 0 1px rgba(167,139,250,0.2)"
+                    : "none",
                 }}
-                onMouseEnter={e => {
-                  if (!isActive) e.currentTarget.style.color = "var(--foreground)";
+                onMouseEnter={(e) => {
+                  if (!isActive)
+                    e.currentTarget.style.color = "var(--foreground)";
                 }}
-                onMouseLeave={e => {
-                  if (!isActive) e.currentTarget.style.color = "var(--foreground-muted)";
+                onMouseLeave={(e) => {
+                  if (!isActive)
+                    e.currentTarget.style.color = "var(--foreground-muted)";
                 }}
               >
                 {link.label}
@@ -97,10 +135,15 @@ export default function Header() {
       </div>
 
       {/* Botão flutuante mobile */}
-      <button
+      <motion.button
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.4, ease: "easeInOut", delay: 0.6 }}
         className="fixed bottom-6 right-6 z-50 md:hidden w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300"
         style={{
-          backgroundColor: menuOpen ? "rgba(167,139,250,0.2)" : "rgba(10,10,10,0.9)",
+          backgroundColor: menuOpen
+            ? "rgba(167,139,250,0.2)"
+            : "rgba(10,10,10,0.9)",
           backdropFilter: "blur(12px)",
           border: "1px solid rgba(167,139,250,0.3)",
           boxShadow: menuOpen
@@ -108,7 +151,7 @@ export default function Header() {
             : "0 4px 20px rgba(0,0,0,0.4)",
           color: "var(--accent)",
         }}
-        onClick={() => setMenuOpen(prev => !prev)}
+        onClick={() => setMenuOpen((prev) => !prev)}
         aria-label="Menu"
       >
         <div
@@ -119,13 +162,22 @@ export default function Header() {
             <span style={{ fontSize: "1.2rem", lineHeight: 1 }}>×</span>
           ) : (
             <>
-              <span className="block w-5 h-px" style={{ backgroundColor: "var(--accent)" }} />
-              <span className="block w-5 h-px" style={{ backgroundColor: "var(--accent)" }} />
-              <span className="block w-5 h-px" style={{ backgroundColor: "var(--accent)" }} />
+              <span
+                className="block w-5 h-px"
+                style={{ backgroundColor: "var(--accent)" }}
+              />
+              <span
+                className="block w-5 h-px"
+                style={{ backgroundColor: "var(--accent)" }}
+              />
+              <span
+                className="block w-5 h-px"
+                style={{ backgroundColor: "var(--accent)" }}
+              />
             </>
           )}
         </div>
-      </button>
+      </motion.button>
 
       {/* Menu mobile flutuante */}
       <div
@@ -142,17 +194,28 @@ export default function Header() {
             <a
               key={link.href}
               href={link.href}
-              onClick={e => { e.preventDefault(); handleNavClick(link.href); }}
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavClick(link.href);
+              }}
               className="flex items-center gap-3 px-4 py-3 rounded-full font-mono text-sm transition-all duration-200"
               style={{
                 backgroundColor: "rgba(10,10,10,0.95)",
                 backdropFilter: "blur(12px)",
-                border: isActive ? "1px solid rgba(167,139,250,0.4)" : "1px solid var(--border)",
+                border: isActive
+                  ? "1px solid rgba(167,139,250,0.4)"
+                  : "1px solid var(--border)",
                 color: isActive ? "var(--accent)" : "var(--foreground-muted)",
-                boxShadow: isActive ? "0 0 12px rgba(167,139,250,0.2)" : "0 4px 12px rgba(0,0,0,0.3)",
+                boxShadow: isActive
+                  ? "0 0 12px rgba(167,139,250,0.2)"
+                  : "0 4px 12px rgba(0,0,0,0.3)",
               }}
             >
-              <span style={{ color: isActive ? "var(--accent)" : "var(--foreground-muted)" }}>
+              <span
+                style={{
+                  color: isActive ? "var(--accent)" : "var(--foreground-muted)",
+                }}
+              >
                 {link.icon}
               </span>
               {link.label}
@@ -165,7 +228,10 @@ export default function Header() {
       {menuOpen && (
         <div
           className="fixed inset-0 z-30 md:hidden"
-          style={{ backgroundColor: "rgba(0,0,0,0.3)", backdropFilter: "blur(4px)" }}
+          style={{
+            backgroundColor: "rgba(0,0,0,0.3)",
+            backdropFilter: "blur(4px)",
+          }}
           onClick={() => setMenuOpen(false)}
         />
       )}

@@ -1,5 +1,7 @@
 "use client";
 
+import { motion } from "framer-motion";
+
 const education = [
   {
     degree: "Engenharia de Software",
@@ -15,22 +17,48 @@ export default function Experience() {
   return (
     <section id="experiencia" className="relative z-10 py-20 px-6">
       <div className="max-w-5xl mx-auto flex flex-col gap-12">
-
         {/* Header */}
         <div className="flex items-center gap-4">
-          <span className="font-mono text-sm tracking-widest whitespace-nowrap" style={{ color: "var(--accent)" }}>
+          <span
+            className="font-mono text-sm tracking-widest whitespace-nowrap"
+            style={{ color: "var(--accent)" }}
+          >
             ✦ EXPERIÊNCIA & FORMAÇÃO
           </span>
-          <div className="flex-1 h-px" style={{ backgroundColor: "var(--accent)", opacity: 0.4 }} />
+          <div
+            className="flex-1 h-px"
+            style={{ backgroundColor: "var(--accent)", opacity: 0.4 }}
+          />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.2 } },
+          }}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12"
+        >
           {/* Esquerda — Histórico */}
-          <div className="flex flex-col gap-6">
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.5, ease: "easeOut" },
+              },
+            }}
+            className="flex flex-col gap-6"
+          >
             <span
               className="font-mono text-xs tracking-widest uppercase font-bold"
-              style={{ color: "var(--accent)", textShadow: "0 0 10px rgba(167,139,250,0.5)" }}
+              style={{
+                color: "var(--accent)",
+                textShadow: "0 0 10px rgba(167,139,250,0.5)",
+              }}
             >
               Histórico
             </span>
@@ -40,9 +68,15 @@ export default function Experience() {
               <div className="flex flex-col items-center gap-1 pt-1">
                 <div
                   className="w-3 h-3 rounded-sm shrink-0"
-                  style={{ backgroundColor: "var(--foreground-muted)", opacity: 0.3 }}
+                  style={{
+                    backgroundColor: "var(--foreground-muted)",
+                    opacity: 0.3,
+                  }}
                 />
-                <div className="w-px flex-1" style={{ backgroundColor: "var(--border)" }} />
+                <div
+                  className="w-px flex-1"
+                  style={{ backgroundColor: "var(--border)" }}
+                />
               </div>
 
               {/* Card placeholder */}
@@ -56,23 +90,42 @@ export default function Experience() {
                 }}
               >
                 <div className="flex items-start justify-between gap-2">
-                  <span className="font-mono text-sm font-bold" style={{ color: "var(--foreground)" }}>
+                  <span
+                    className="font-mono text-sm font-bold"
+                    style={{ color: "var(--foreground)" }}
+                  >
                     Em breve
                   </span>
                 </div>
-                <span className="font-mono text-xs" style={{ color: "var(--accent)" }}>
+                <span
+                  className="font-mono text-xs"
+                  style={{ color: "var(--accent)" }}
+                >
                   Primeira oportunidade na área
                 </span>
-                <p className="text-xs leading-relaxed" style={{ color: "var(--foreground-muted)" }}>
-                  Histórico de experiências profissionais na área será adicionado em breve.
+                <p
+                  className="text-xs leading-relaxed"
+                  style={{ color: "var(--foreground-muted)" }}
+                >
+                  Histórico de experiências profissionais na área será
+                  adicionado em breve.
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Direita — Formação + Certificações */}
-          <div className="flex flex-col gap-8">
-
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.5, ease: "easeOut" },
+              },
+            }}
+            className="flex flex-col gap-8"
+          >
             {/* Formação */}
             <div className="flex flex-col gap-4">
               <span
@@ -94,22 +147,33 @@ export default function Experience() {
                     borderLeft: "2px solid #f0f0f0",
                     backgroundColor: "rgba(255,255,255,0.02)",
                   }}
-                  onMouseEnter={e => {
+                  onMouseEnter={(e) => {
                     e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)";
-                    e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.04)";
+                    e.currentTarget.style.backgroundColor =
+                      "rgba(255,255,255,0.04)";
                   }}
-                  onMouseLeave={e => {
+                  onMouseLeave={(e) => {
                     e.currentTarget.style.borderColor = "var(--border)";
-                    e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.02)";
+                    e.currentTarget.style.backgroundColor =
+                      "rgba(255,255,255,0.02)";
                   }}
                 >
-                  <span className="font-mono text-sm font-bold" style={{ color: "var(--foreground)" }}>
+                  <span
+                    className="font-mono text-sm font-bold"
+                    style={{ color: "var(--foreground)" }}
+                  >
                     {edu.degree}
                   </span>
-                  <span className="font-mono text-xs" style={{ color: "#f0f0f0", opacity: 0.7 }}>
+                  <span
+                    className="font-mono text-xs"
+                    style={{ color: "#f0f0f0", opacity: 0.7 }}
+                  >
                     {edu.institution}
                   </span>
-                  <span className="font-mono text-xs" style={{ color: "var(--foreground-muted)" }}>
+                  <span
+                    className="font-mono text-xs"
+                    style={{ color: "var(--foreground-muted)" }}
+                  >
                     {edu.period}
                   </span>
                 </div>
@@ -142,8 +206,13 @@ export default function Experience() {
                       key={cert}
                       className="font-mono text-xs transition-colors duration-200 cursor-default"
                       style={{ color: "var(--foreground-muted)" }}
-                      onMouseEnter={e => (e.currentTarget.style.color = "#ffffff")}
-                      onMouseLeave={e => (e.currentTarget.style.color = "var(--foreground-muted)")}
+                      onMouseEnter={(e) =>
+                        (e.currentTarget.style.color = "#ffffff")
+                      }
+                      onMouseLeave={(e) =>
+                        (e.currentTarget.style.color =
+                          "var(--foreground-muted)")
+                      }
                     >
                       ▸ {cert}
                     </span>
@@ -151,8 +220,8 @@ export default function Experience() {
                 </div>
               )}
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,34 +1,45 @@
-type Segment = { text: string; highlight: boolean }
+"use client";
+
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.2 } },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
+type Segment = { text: string; highlight: boolean };
 
 function highlight(text: string, keywords: string[]): Segment[] {
-  const escaped = keywords.map((k) => k.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
-  const regex = new RegExp(`(${escaped.join("|")})`, "gi")
-  const parts = text.split(regex)
+  const escaped = keywords.map((k) => k.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  const regex = new RegExp(`(${escaped.join("|")})`, "gi");
+  const parts = text.split(regex);
 
   return parts.map((part) => ({
     text: part,
     highlight: keywords.some((k) => k.toLowerCase() === part.toLowerCase()),
-  }))
+  }));
 }
 
 function Highlighted({ text, keywords }: { text: string; keywords: string[] }) {
-  const segments = highlight(text, keywords)
+  const segments = highlight(text, keywords);
   return (
     <>
       {segments.map((seg, i) =>
         seg.highlight ? (
-          <span
-            key={i}
-            style={{ color: "var(--accent)", fontWeight: 500 }}
-          >
+          <span key={i} style={{ color: "var(--accent)", fontWeight: 500 }}>
             {seg.text}
           </span>
         ) : (
           <span key={i}>{seg.text}</span>
-        )
+        ),
       )}
     </>
-  )
+  );
 }
 
 const paragraphs: { text: string; keywords: string[] }[] = [
@@ -44,13 +55,12 @@ const paragraphs: { text: string; keywords: string[] }[] = [
     text: "Meu objetivo não é chegar a sênior ou ganhar bem. É ser útil pra um time, pra um projeto, pra quem precise de ajuda. E aprender com quem sabe mais do que eu enquanto isso.",
     keywords: ["útil pra um time", "aprender com quem sabe mais"],
   },
-]
+];
 
 export default function About() {
   return (
     <section id="sobre" className="relative z-10 py-20 px-6">
       <div className="max-w-5xl mx-auto flex flex-col gap-12">
-
         {/* Header */}
         <div className="flex items-center gap-4">
           <span
@@ -66,20 +76,33 @@ export default function About() {
         </div>
 
         {/* Texto */}
-        <div className="flex flex-col gap-6">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="flex flex-col gap-6"
+        >
           {paragraphs.map(({ text, keywords }, i) => (
-            <p
+            <motion.p
+              variants={itemVariants}
               key={i}
               className="text-sm leading-relaxed"
               style={{ color: "var(--foreground-muted)" }}
             >
               <Highlighted text={text} keywords={keywords} />
-            </p>
+            </motion.p>
           ))}
-        </div>
+        </motion.div>
 
         {/* Badge */}
-        <div className="flex justify-center">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="flex justify-center"
+        >
           <div
             className="flex items-center gap-2 font-mono text-xs px-4 py-2 rounded-full"
             style={{
@@ -97,9 +120,8 @@ export default function About() {
             />
             Em construção — rumo ao primeiro trabalho na área
           </div>
-        </div>
-
+        </motion.div>
       </div>
     </section>
-  )
+  );
 }
