@@ -23,7 +23,7 @@ import {
 import { RiOpenaiFill } from "react-icons/ri";
 import { FaStar, FaRegStar, FaJava } from "react-icons/fa";
 import { VscVscode } from "react-icons/vsc";
-import { motion } from "framer-motion";
+import { motion, easeOut } from "framer-motion";
 
 interface Skill {
   name: string;
@@ -47,7 +47,7 @@ const containerVariants = {
 
 const cardVariants = {
   hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: easeOut } },
 };
 
 const skills: SkillGroup[] = [

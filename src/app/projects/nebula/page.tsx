@@ -4,12 +4,12 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, easeOut } from "framer-motion";
 
 const fadeUp = (delay: number) => ({
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5, ease: "easeOut", delay },
+  transition: { duration: 0.5, ease: easeOut, delay },
 });
 
 export default function NebulaPage() {

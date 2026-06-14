@@ -2,7 +2,7 @@
 
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { Mail } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, easeOut } from "framer-motion";
 
 export default function Contact() {
   return (
@@ -39,7 +39,7 @@ export default function Contact() {
                 visible: {
                   opacity: 1,
                   y: 0,
-                  transition: { duration: 0.5, ease: "easeOut" },
+                  transition: { duration: 0.5, ease: easeOut },
                 },
               }}
               style={{
@@ -59,7 +59,7 @@ export default function Contact() {
                 visible: {
                   opacity: 1,
                   y: 0,
-                  transition: { duration: 0.5, ease: "easeOut" },
+                  transition: { duration: 0.5, ease: easeOut },
                 },
               }}
               className="font-mono text-sm leading-relaxed"
@@ -112,7 +112,7 @@ export default function Contact() {
                   visible: {
                     opacity: 1,
                     x: 0,
-                    transition: { duration: 0.4, ease: "easeOut" },
+                    transition: { duration: 0.4, ease: easeOut },
                   },
                 }}
                 onMouseEnter={(e) =>

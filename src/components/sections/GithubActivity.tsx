@@ -2,7 +2,7 @@
 
 import { FaGithub } from "react-icons/fa";
 import { GitFork, Users } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, easeOut } from "framer-motion";
 
 interface Contribution {
   date: string;
@@ -32,7 +32,7 @@ const containerVariants = {
 
 const itemVariants = {
   hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: easeOut } },
 };
 
 function HeatMap({ contributions }: { contributions: Contribution[] }) {
@@ -88,7 +88,7 @@ function HeatMap({ contributions }: { contributions: Contribution[] }) {
                     transition={{
                       duration: 0.2,
                       delay: wi * 0.015,
-                      ease: "easeOut",
+                      ease: easeOut,
                     }}
                     onMouseEnter={(e) => {
                       if (day) {

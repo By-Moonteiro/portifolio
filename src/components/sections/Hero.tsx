@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { motion } from "framer-motion";
+import { motion, easeOut } from "framer-motion";
 
 const TYPING_TEXT = "Full Stack Developer";
 const TYPING_SPEED = 80;
@@ -10,7 +10,7 @@ const TYPING_SPEED = 80;
 const fadeUp = (delay: number) => ({
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.4, ease: "easeOut", delay },
+  transition: { duration: 0.4, ease: easeOut, delay },
 });
 
 function useTypingEffect(text: string, speed: number) {
@@ -181,7 +181,7 @@ export default function Hero() {
               "linear-gradient(to bottom, var(--foreground-muted), transparent)",
           }}
           animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.5, ease: "easeInOut", repeat: Infinity }}
+          transition={{ duration: 1.5, ease: easeOut, repeat: Infinity }}
         />
       </motion.div>
     </section>

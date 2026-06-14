@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, easeOut } from "framer-motion";
 
 const education = [
   {
@@ -48,7 +48,7 @@ export default function Experience() {
               visible: {
                 opacity: 1,
                 y: 0,
-                transition: { duration: 0.5, ease: "easeOut" },
+                transition: { duration: 0.5, ease: easeOut },
               },
             }}
             className="flex flex-col gap-6"
@@ -121,7 +121,7 @@ export default function Experience() {
               visible: {
                 opacity: 1,
                 y: 0,
-                transition: { duration: 0.5, ease: "easeOut" },
+                transition: { duration: 0.5, ease: easeOut },
               },
             }}
             className="flex flex-col gap-8"

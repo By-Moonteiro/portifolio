@@ -4,7 +4,7 @@ import { FaGithub } from "react-icons/fa";
 import { ExternalLink } from "lucide-react";
 import type { Project } from "./types";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, easeOut } from "framer-motion";
 
 interface Props {
   project: Project;
@@ -16,7 +16,7 @@ const cardVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut", staggerChildren: 0.25 },
+    transition: { duration: 0.6, ease: easeOut, staggerChildren: 0.25 },
   },
 };
 
