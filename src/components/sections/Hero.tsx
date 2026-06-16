@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { motion, easeOut } from "framer-motion";
 
-const TYPING_TEXT = "Full Stack Developer";
+const TYPING_TEXT = "Backend & Full Stack Developer";
 const TYPING_SPEED = 80;
 
 const fadeUp = (delay: number) => ({
