@@ -18,6 +18,26 @@ interface Cursos {
   done: boolean;
 }
 
+const CursosEmAndamento: Cursos[] = [
+  {
+    name: "HTML e CSS para Iniciantes",
+    institution: "Origamid",
+    period: "Em andamento",
+    done: false,
+  },
+  {
+    name: "React Completo",
+    institution: "Origamid",
+    period: "Em andamento",
+    done: false,
+  },
+  {
+    name: "Tailwind CSS",
+    institution: "Origamid",
+    period: "Em andamento",
+    done: false,
+  },
+];
 const certifications: Cursos[] = [];
 
 export default function Experience() {
@@ -186,6 +206,40 @@ export default function Experience() {
                 </div>
               ))}
             </div>
+
+            {/* Cursos em Andamento */}
+            {CursosEmAndamento.length > 0 && (
+              <div className="flex flex-col gap-4">
+                <span
+                  className="font-mono text-xs tracking-widest uppercase font-bold"
+                  style={{
+                    color: "#67e8f9",
+                    textShadow: "0 0 10px rgba(103,232,249,0.5)",
+                  }}
+                >
+                  Cursos Em Andamento
+                </span>
+
+                <div className="flex flex-col gap-2">
+                  {CursosEmAndamento.map((curso) => (
+                    <span
+                      key={curso.name}
+                      className="font-mono text-xs transition-colors duration-200 cursor-default"
+                      style={{ color: "var(--foreground-muted)" }}
+                      onMouseEnter={(e) =>
+                        (e.currentTarget.style.color = "#ffffff")
+                      }
+                      onMouseLeave={(e) =>
+                        (e.currentTarget.style.color =
+                          "var(--foreground-muted)")
+                      }
+                    >
+                      ▸ {curso.name} - {curso.institution}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Certificações */}
             {certifications.length > 0 && (
