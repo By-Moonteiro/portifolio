@@ -11,7 +11,14 @@ const education = [
   },
 ];
 
-const certifications: string[] = [];
+interface Cursos {
+  name: string;
+  institution: string;
+  period: string;
+  done: boolean;
+}
+
+const certifications: Cursos[] = [];
 
 export default function Experience() {
   return (
@@ -181,25 +188,18 @@ export default function Experience() {
             </div>
 
             {/* Certificações */}
-            <div className="flex flex-col gap-4">
-              <span
-                className="font-mono text-xs tracking-widest uppercase font-bold"
-                style={{
-                  color: "#67e8f9",
-                  textShadow: "0 0 10px rgba(103,232,249,0.5)",
-                }}
-              >
-                Certificações
-              </span>
-
-              {certifications.length === 0 ? (
-                <p
-                  className="font-mono text-xs italic"
-                  style={{ color: "var(--foreground-muted)", opacity: 0.5 }}
+            {certifications.length > 0 && (
+              <div className="flex flex-col gap-4">
+                <span
+                  className="font-mono text-xs tracking-widest uppercase font-bold"
+                  style={{
+                    color: "#67e8f9",
+                    textShadow: "0 0 10px rgba(103,232,249,0.5)",
+                  }}
                 >
-                  Em breve — cursos em andamento.
-                </p>
-              ) : (
+                  Certificações
+                </span>
+
                 <div className="flex flex-col gap-2">
                   {certifications.map((cert) => (
                     <span
@@ -218,8 +218,8 @@ export default function Experience() {
                     </span>
                   ))}
                 </div>
-              )}
-            </div>
+              </div>
+            )}
           </motion.div>
         </motion.div>
       </div>
