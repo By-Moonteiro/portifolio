@@ -10,9 +10,7 @@ import GithubActivity from "@/components/sections/GithubActivity";
 import About from "../components/sections/About";
 
 export default async function Home() {
-  const [stats] = await Promise.all([
-    getGithubStats("By-Moonteiro"),
-  ]);
+  const [stats] = await Promise.all([getGithubStats("By-Moonteiro")]);
 
   return (
     <main>

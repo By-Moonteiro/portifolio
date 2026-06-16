@@ -44,8 +44,8 @@ function Highlighted({ text, keywords }: { text: string; keywords: string[] }) {
 
 const paragraphs: { text: string; keywords: string[] }[] = [
   {
-    text: "Comecei a programar de fato em outubro de 2025 — e desde então não parei. Em menos de um ano acumulei 644 contribuições, construí projetos reais com stack profissional e descobri que gosto do ato de programar em si, não só da perspectiva de emprego.",
-    keywords: ["outubro de 2025", "644 contribuições", "stack profissional"],
+    text: "Comecei a programar de fato em outubro de 2025 — e desde então não parei. Em menos de um ano acumulei 660+ contribuições, construí projetos reais com stack profissional e descobri que gosto do ato de programar em si, não só da perspectiva de emprego.",
+    keywords: ["outubro de 2025", `660+ contribuições`, "stack profissional"],
   },
   {
     text: "Sou autodidata, ansioso, curioso e honesto ao ponto de me incomodar quando finjo saber algo que não sei. Prefiro deixar claro meu nível do que inflar um currículo. Ainda estou aprendendo e não tenho problema nenhum em dizer isso.",

@@ -55,7 +55,7 @@ export default function NebulaPage() {
                   animation: "pulse 1.5s ease-in-out infinite",
                 }}
               />
-              WIP — 2025
+              WIP — 2026
             </span>
           </motion.div>
 
