@@ -60,7 +60,7 @@ export default function Experience() {
                 textShadow: "0 0 10px rgba(167,139,250,0.5)",
               }}
             >
-              Histórico
+              Histórico Profissional
             </span>
 
             <div className="flex gap-4">
@@ -214,7 +214,7 @@ export default function Experience() {
                           "var(--foreground-muted)")
                       }
                     >
-                      ▸ {cert}
+                      ▸ {cert.name} - {cert.institution} - {cert.period}
                     </span>
                   ))}
                 </div>
