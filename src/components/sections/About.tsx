@@ -42,22 +42,32 @@ function Highlighted({ text, keywords }: { text: string; keywords: string[] }) {
   );
 }
 
-const paragraphs: { text: string; keywords: string[] }[] = [
-  {
-    text: "Comecei a programar de fato em outubro de 2025 — e desde então não parei. Em menos de um ano acumulei 660+ contribuições, construí projetos reais com stack profissional e descobri que gosto do ato de programar em si, não só da perspectiva de emprego.",
-    keywords: ["outubro de 2025", `660+ contribuições`, "stack profissional"],
-  },
-  {
-    text: "Sou autodidata, ansioso, curioso e honesto ao ponto de me incomodar quando finjo saber algo que não sei. Prefiro deixar claro meu nível do que inflar um currículo. Ainda estou aprendendo e não tenho problema nenhum em dizer isso.",
-    keywords: ["autodidata", "curioso", "honesto", "ainda estou aprendendo"],
-  },
-  {
-    text: "Meu objetivo não é chegar a sênior ou ganhar bem. É ser útil pra um time, pra um projeto, pra quem precise de ajuda. E aprender com quem sabe mais do que eu enquanto isso.",
-    keywords: ["útil pra um time", "aprender com quem sabe mais"],
-  },
-];
+interface Props {
+  total: Record<string, number>;
+}
 
-export default function About() {
+export default function About({ total }: Props) {
+  const totalContributions = Object.values(total).reduce((a, b) => a + b, 0);
+
+  const paragraphs: { text: string; keywords: string[] }[] = [
+    {
+      text: `Comecei a programar de fato em outubro de 2025 — e desde então não parei. Em menos de um ano acumulei ${totalContributions} contribuições, construí projetos reais com stack profissional e descobri que gosto do ato de programar em si, não só da perspectiva de emprego.`,
+      keywords: [
+        "outubro de 2025",
+        `${totalContributions} contribuições`,
+        "stack profissional",
+      ],
+    },
+    {
+      text: "Sou autodidata, ansioso, curioso e honesto ao ponto de me incomodar quando finjo saber algo que não sei. Prefiro deixar claro meu nível do que inflar um currículo. Ainda estou aprendendo e não tenho problema nenhum em dizer isso.",
+      keywords: ["autodidata", "curioso", "honesto", "ainda estou aprendendo"],
+    },
+    {
+      text: "Meu objetivo não é chegar a sênior ou ganhar bem. É ser útil pra um time, pra um projeto, pra quem precise de ajuda. E aprender com quem sabe mais do que eu enquanto isso.",
+      keywords: ["útil pra um time", "aprender com quem sabe mais"],
+    },
+  ];
+
   return (
     <section id="sobre" className="relative z-10 py-20 px-6">
       <div className="max-w-5xl mx-auto flex flex-col gap-12">
