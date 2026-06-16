@@ -92,17 +92,26 @@ export default function Hero() {
 
         {/* Botões */}
         <motion.div {...fadeUp(0.6)} className="flex items-center gap-4 mt-2">
-          <button
-            disabled
-            className="font-mono text-sm px-6 py-3 rounded-sm cursor-not-allowed"
+          <a
+            href="/wagner_monteiro_cv.pdf"
+            download
+            className="font-mono text-sm px-6 py-3 rounded-sm transition-all duration-200"
             style={{
-              border: "1px solid var(--border)",
-              color: "var(--foreground-muted)",
-              opacity: 0.4,
+              border: "1px solid var(--accent)",
+              color: "var(--accent)",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "var(--accent-glow)";
+              e.currentTarget.style.boxShadow =
+                "0 0 20px rgba(167,139,250,0.2)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "transparent";
+              e.currentTarget.style.boxShadow = "none";
             }}
           >
             Baixar CV
-          </button>
+          </a>
 
           <a
             href="#projetos"
