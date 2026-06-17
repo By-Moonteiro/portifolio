@@ -11,14 +11,14 @@ const education = [
   },
 ];
 
-interface Cursos {
+interface Courses {
   name: string;
   institution: string;
   period: string;
   done: boolean;
 }
 
-const CursosEmAndamento: Cursos[] = [
+const CoursesInProgress: Courses[] = [
   {
     name: "HTML e CSS para Iniciantes",
     institution: "Origamid",
@@ -38,7 +38,7 @@ const CursosEmAndamento: Cursos[] = [
     done: false,
   },
 ];
-const certifications: Cursos[] = [];
+const certifications: Courses[] = [];
 
 export default function Experience() {
   return (
@@ -208,7 +208,7 @@ export default function Experience() {
             </div>
 
             {/* Cursos em Andamento */}
-            {CursosEmAndamento.length > 0 && (
+            {CoursesInProgress.length > 0 && (
               <div className="flex flex-col gap-4">
                 <span
                   className="font-mono text-xs tracking-widest uppercase font-bold"
@@ -221,7 +221,7 @@ export default function Experience() {
                 </span>
 
                 <div className="flex flex-col gap-2">
-                  {CursosEmAndamento.map((curso) => (
+                  {CoursesInProgress.map((curso) => (
                     <span
                       key={curso.name}
                       className="font-mono text-xs transition-colors duration-200 cursor-default"
