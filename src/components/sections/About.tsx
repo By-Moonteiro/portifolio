@@ -45,8 +45,14 @@ function Highlighted({ text, keywords }: { text: string; keywords: string[] }) {
 export default function About() {
   const paragraphs: { text: string; keywords: string[] }[] = [
     {
-      text: `Comecei a programar em outubro de 2025 e desde então mantenho consistência diária construindo projetos reais..`,
-      keywords: ["outubro de 2025", "projetos reais"],
+      text: `Comecei minha jornada na programação em Fevereiro de 2025. Mas só comecei a me dedicar de fato em outubro de 2025. Desde então, mantenho consistência e construo projetos reais, que resolvem problemas reais.`,
+      keywords: [
+        "Fevereiro de 2025",
+        "outubro de 2025",
+        "consistência",
+        "projetos reais",
+        "problemas reais",
+      ],
     },
     {
       text: "Hoje meu foco está em backend com Node.js, NestJS, PostgreSQL e Prisma, construindo APIs e produtos com arquitetura escalável. Paralelamente, evoluo no frontend com React, Next.js e Tailwind.",
@@ -65,6 +71,7 @@ export default function About() {
       keywords: [
         "backend",
         "full stack",
+        "base",
         "arquitetura",
         "integrações",
         "testes",
