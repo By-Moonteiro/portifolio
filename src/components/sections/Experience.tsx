@@ -257,7 +257,7 @@ export default function Experience() {
                 <div className="flex flex-col gap-2">
                   {certifications.map((cert) => (
                     <span
-                      key={cert}
+                      key={cert.name}
                       className="font-mono text-xs transition-colors duration-200 cursor-default"
                       style={{ color: "var(--foreground-muted)" }}
                       onMouseEnter={(e) =>
