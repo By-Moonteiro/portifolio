@@ -7,7 +7,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { getGithubStats } from "@/lib/github";
 import GithubActivity from "@/components/sections/GithubActivity";
-import About from "../components/sections/About";
+import About from "@/components/sections/About";
 
 export default async function Home() {
   const [stats] = await Promise.all([getGithubStats("By-Moonteiro")]);
