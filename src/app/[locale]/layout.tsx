@@ -42,7 +42,7 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
-      className={`${syne.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${syne.variable} ${geistMono.variable} data-scroll-behavior="smooth"  h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <NextIntlClientProvider messages={messages}>
