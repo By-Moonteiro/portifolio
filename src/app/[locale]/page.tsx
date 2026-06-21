@@ -8,14 +8,23 @@ import Footer from "@/components/layout/Footer";
 import { getGithubStats } from "@/lib/github";
 import GithubActivity from "@/components/sections/GithubActivity";
 import About from "@/components/sections/About";
+import { getTranslations } from "next-intl/server";
 
 export default async function Home() {
-  const [stats] = await Promise.all([getGithubStats("By-Moonteiro")]);
+  const [stats, t] = await Promise.all([
+    getGithubStats("By-Moonteiro"),
+    getTranslations("hero"),
+  ]);
 
   return (
     <main>
       <Header />
-      <Hero />
+      <Hero
+        role={t("role")}
+        description={t("description")}
+        downloadCV={t("downloadCV")}
+        viewProjects={t("viewProjects")}
+      />
       <Projects />
       <Skills />
       <About />

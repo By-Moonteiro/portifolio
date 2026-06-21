@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { motion, easeOut } from "framer-motion";
 
-const TYPING_TEXT = "Backend & Full Stack Developer";
 const TYPING_SPEED = 80;
 
 const fadeUp = (delay: number) => ({
@@ -33,8 +32,20 @@ function useTypingEffect(text: string, speed: number) {
   return { displayed, done };
 }
 
-export default function Hero() {
-  const { displayed, done } = useTypingEffect(TYPING_TEXT, TYPING_SPEED);
+interface Props {
+  role: string;
+  description: string;
+  downloadCV: string;
+  viewProjects: string;
+}
+
+export default function Hero({
+  role,
+  description,
+  downloadCV,
+  viewProjects,
+}: Props) {
+  const { displayed, done } = useTypingEffect(role, TYPING_SPEED);
 
   return (
     <section className="relative z-10 min-h-screen flex items-center justify-center px-6">
@@ -86,8 +97,7 @@ export default function Hero() {
           className="font-mono text-sm max-w-md leading-relaxed"
           style={{ color: "var(--foreground-muted)" }}
         >
-          Construindo soluções com Node no back, React no front e TypeScript em
-          tudo.
+          {description}
         </motion.p>
 
         {/* Botões */}
@@ -110,7 +120,7 @@ export default function Hero() {
               e.currentTarget.style.boxShadow = "none";
             }}
           >
-            Baixar CV
+            {downloadCV}
           </a>
 
           <a
@@ -130,7 +140,7 @@ export default function Hero() {
               e.currentTarget.style.boxShadow = "none";
             }}
           >
-            Ver Projetos
+            {viewProjects}
           </a>
         </motion.div>
 
