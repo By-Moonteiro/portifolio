@@ -6,16 +6,7 @@ import { FaGithub } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { useRouter, usePathname } from "next/navigation";
 import { useLocale } from "next-intl";
-
-const navLinks = [
-  { label: "home", href: "#", icon: <Home size={16} /> },
-  { label: "projetos", href: "#projetos", icon: <FolderGit2 size={16} /> },
-  { label: "skills", href: "#skills", icon: <Zap size={16} /> },
-  { label: "sobre", href: "#sobre", icon: <User size={16} /> },
-  { label: "github", href: "#github", icon: <FaGithub size={16} /> },
-  { label: "experiência", href: "#experiencia", icon: <Briefcase size={16} /> },
-  { label: "contato", href: "#contato", icon: <Mail size={16} /> },
-];
+import { useTranslations } from "next-intl";
 
 export default function Header() {
   const [active, setActive] = useState("#");
@@ -24,6 +15,21 @@ export default function Header() {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
+  const t = useTranslations("nav");
+
+  const navLinks = [
+    { label: t("home"), href: "#", icon: <Home size={16} /> },
+    { label: t("projects"), href: "#projetos", icon: <FolderGit2 size={16} /> },
+    { label: t("skills"), href: "#skills", icon: <Zap size={16} /> },
+    { label: t("about"), href: "#sobre", icon: <User size={16} /> },
+    { label: t("github"), href: "#github", icon: <FaGithub size={16} /> },
+    {
+      label: t("experience"),
+      href: "#experiencia",
+      icon: <Briefcase size={16} />,
+    },
+    { label: t("contact"), href: "#contato", icon: <Mail size={16} /> },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
