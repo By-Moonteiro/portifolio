@@ -11,14 +11,16 @@ import About from "@/components/sections/About";
 import { getTranslations } from "next-intl/server";
 
 export default async function Home() {
-  const [stats, t, tAbout, tContact, tSkills, tExperience] = await Promise.all([
-    getGithubStats("By-Moonteiro"),
-    getTranslations("hero"),
-    getTranslations("about"),
-    getTranslations("contact"),
-    getTranslations("skills"),
-    getTranslations("experience"),
-  ]);
+  const [stats, t, tAbout, tContact, tSkills, tExperience, tGithub] =
+    await Promise.all([
+      getGithubStats("By-Moonteiro"),
+      getTranslations("hero"),
+      getTranslations("about"),
+      getTranslations("contact"),
+      getTranslations("skills"),
+      getTranslations("experience"),
+      getTranslations("github"),
+    ]);
 
   return (
     <main>
@@ -58,6 +60,16 @@ export default async function Home() {
         public_repos={stats.public_repos}
         contributions={stats.contributions}
         total={stats.total}
+        title={tGithub("title")}
+        contributionsLabel={tGithub("contributions")}
+        repos={tGithub("repos")}
+        followersLabel={tGithub("followers")}
+        graphTitle={tGithub("graphTitle")}
+        viewProfile={tGithub("viewProfile")}
+        less={tGithub("less")}
+        more={tGithub("more")}
+        loading={tGithub("loading")}
+        contributionsTooltip={tGithub("contributionsTooltip")}
       />
       <Experience
         title={tExperience("title")}

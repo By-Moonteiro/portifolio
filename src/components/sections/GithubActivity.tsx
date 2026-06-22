@@ -15,6 +15,17 @@ interface Props {
   public_repos: number;
   contributions: Contribution[];
   total: Record<string, number>;
+  // Traduções
+  title: string;
+  contributionsLabel: string;
+  repos: string;
+  followersLabel: string;
+  graphTitle: string;
+  viewProfile: string;
+  less: string;
+  more: string;
+  loading: string;
+  contributionsTooltip: string;
 }
 
 const LEVEL_COLORS = [
@@ -35,7 +46,17 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: easeOut } },
 };
 
-function HeatMap({ contributions }: { contributions: Contribution[] }) {
+function HeatMap({
+  contributions,
+  contributionsTooltip,
+  less,
+  more,
+}: {
+  contributions: Contribution[];
+  contributionsTooltip: string;
+  less: string;
+  more: string;
+}) {
   const today = new Date();
   const yearAgo = new Date();
   yearAgo.setFullYear(today.getFullYear() - 1);
@@ -72,7 +93,11 @@ function HeatMap({ contributions }: { contributions: Contribution[] }) {
                 return (
                   <motion.div
                     key={di}
-                    title={day ? `${day.date}: ${day.count} contribuições` : ""}
+                    title={
+                      day
+                        ? `${day.date}: ${day.count} ${contributionsTooltip}`
+                        : ""
+                    }
                     className="rounded-sm"
                     style={{
                       width: "11px",
@@ -113,7 +138,7 @@ function HeatMap({ contributions }: { contributions: Contribution[] }) {
           className="font-mono text-xs"
           style={{ color: "var(--foreground-muted)" }}
         >
-          menos
+          {less}
         </span>
         {LEVEL_COLORS.map((color, i) => (
           <div
@@ -126,7 +151,7 @@ function HeatMap({ contributions }: { contributions: Contribution[] }) {
           className="font-mono text-xs"
           style={{ color: "var(--foreground-muted)" }}
         >
-          mais
+          {more}
         </span>
       </div>
     </div>
@@ -138,21 +163,31 @@ export default function GithubActivity({
   public_repos,
   contributions,
   total,
+  title,
+  contributionsLabel,
+  repos,
+  followersLabel,
+  graphTitle,
+  viewProfile,
+  less,
+  more,
+  loading,
+  contributionsTooltip,
 }: Props) {
   const totalContributions = Object.values(total).reduce((a, b) => a + b, 0);
 
   const stats = [
     {
-      label: "Contribuições",
+      label: contributionsLabel,
       value: totalContributions.toLocaleString("pt-BR"),
       icon: <FaGithub size={16} />,
     },
     {
-      label: "Repositórios Públicos",
+      label: repos,
       value: public_repos,
       icon: <GitFork size={16} />,
     },
-    { label: "Seguidores", value: followers, icon: <Users size={16} /> },
+    { label: followersLabel, value: followers, icon: <Users size={16} /> },
   ];
 
   return (
@@ -164,7 +199,7 @@ export default function GithubActivity({
             className="font-mono text-sm tracking-widest whitespace-nowrap"
             style={{ color: "var(--accent)" }}
           >
-            ✦ GITHUB
+            ✦ {title}
           </span>
           <div
             className="flex-1 h-px"
@@ -225,7 +260,7 @@ export default function GithubActivity({
               className="font-mono text-xs tracking-widest uppercase"
               style={{ color: "var(--accent)" }}
             >
-              Contribution Graph — últimos 365 dias
+              {graphTitle}
             </span>
             <a
               href="https://github.com/By-Moonteiro"
@@ -241,18 +276,23 @@ export default function GithubActivity({
               }
             >
               <FaGithub size={13} />
-              Ver perfil
+              {viewProfile}
             </a>
           </div>
 
           {contributions.length > 0 ? (
-            <HeatMap contributions={contributions} />
+            <HeatMap
+              contributions={contributions}
+              contributionsTooltip={contributionsTooltip}
+              less={less}
+              more={more}
+            />
           ) : (
             <p
               className="font-mono text-xs"
               style={{ color: "var(--foreground-muted)" }}
             >
-              Carregando...
+              {loading}
             </p>
           )}
         </div>
