@@ -1,0 +1,294 @@
+{
+  "hero": {
+    "title": "Wagner Monteiro",
+    "role": "Desenvolvedor Backend & Full Stack",
+    "description": "Construindo soluções com Node no back, React no front e TypeScript em tudo.",
+    "downloadCV": "Baixar CV",
+    "viewProjects": "Ver Projetos"
+  },
+
+  "about": {
+    "title": "SOBRE",
+    "badge": "Em construção — rumo ao primeiro trabalho na área",
+    "p1": "Comecei minha jornada na programação em Fevereiro de 2025. Mas só comecei a me dedicar de fato em outubro de 2025. Desde então, mantenho consistência e construo projetos reais, que resolvem problemas reais.",
+    "p1Keywords": "Fevereiro de 2025,outubro de 2025,consistência,projetos reais,problemas reais",
+    "p2": "Hoje meu foco está em backend com Node.js, NestJS, PostgreSQL e Prisma, construindo APIs e produtos com arquitetura escalável. Paralelamente, evoluo no frontend com React, Next.js e Tailwind.",
+    "p2Keywords": "Node.js,NestJS,PostgreSQL,Prisma,React,Next.js,Tailwind",
+    "p3": "Meu objetivo é crescer como desenvolvedor backend ou full stack, fortalecendo base, arquitetura, integrações, testes e boas práticas de software.",
+    "p3Keywords": "backend,full stack,base,arquitetura,integrações,testes,boas práticas"
+  },
+
+  "contact": {
+    "title": "CONTATO",
+    "heading": "Vamos conversar?",
+    "subheading": "Aberto a oportunidades e colaborações."
+  },
+
+  "skills": {
+    "title": "SKILLS",
+    "learning": "Aprendendo",
+    "learningSubtitle": "em progresso ativo",
+    "categories": {
+      "languages": "Linguagens de Programação",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "database": "Banco de Dados",
+      "infra": "Infra & Deploy",
+      "tools": "Ferramentas"
+    }
+  },
+
+  "experience": {
+    "title": "EXPERIÊNCIA & FORMAÇÃO",
+    "history": "Histórico Profissional",
+    "soon": "Em breve",
+    "firstJob": "Primeira oportunidade na área",
+    "historyPlaceholder": "Histórico de experiências profissionais na área será adicionado em breve.",
+    "education": "Formação",
+    "inProgress": "Cursos Em Andamento",
+    "certifications": "Certificações",
+    "ongoing": "Em andamento",
+    "degree": "Engenharia de Software",
+    "period": "2026 → Em andamento"
+  },
+
+  "github": {
+    "title": "GITHUB",
+    "contributions": "Contribuições",
+    "repos": "Repositórios Públicos",
+    "followers": "Seguidores",
+    "graphTitle": "Contribution Graph — últimos 365 dias",
+    "viewProfile": "Ver perfil",
+    "less": "menos",
+    "more": "mais",
+    "loading": "Carregando...",
+    "contributionsTooltip": "contribuições"
+  },
+
+  "projects": {
+    "title": "PROJETOS",
+    "filters": {
+      "all": "Todos",
+      "fullstack": "Fullstack",
+      "backend": "Backend"
+    },
+    "viewDetails": "Ver detalhes",
+    "repo": "Repo",
+    "demo": "Ver Online",
+    "items": {
+      "astreon": {
+        "description": "Gerenciador de fichas de treino pensado como produto real — multi-tenant, com histórico de evolução e estrutura que cresce junto com o usuário."
+      },
+      "nebula": {
+        "description": "CLI para scaffold de projetos com templates opinados — pule o boilerplate, comece pelo que importa."
+      }
+    }
+  },
+
+  "nav": {
+    "home": "home",
+    "projects": "projetos",
+    "skills": "skills",
+    "about": "sobre",
+    "github": "github",
+    "experience": "experiência",
+    "contact": "contato"
+  },
+
+  "astreon": {
+    "back": "voltar ao portfólio",
+    "status": "WIP",
+    "description": "Gerenciador de fichas de treino pensado como produto real — multi-tenant, com histórico de evolução e estrutura que cresce junto com o usuário.",
+    "repo": "Repositório",
+    "demo": "Demo",
+    "previewDesc": "Algumas telas do Astreon em funcionamento.",
+    "preview": "Preview",
+    "previewImages": [
+      { "alt": "Tela de login" },
+      { "alt": "Dashboard" },
+      { "alt": "Modo treino" },
+      { "alt": "Histórico" }
+    ],
+    "problem": "O Problema",
+    "problemDesc": "O Astreon nasceu de uma dor real e diária — fichas de treino anotadas no WhatsApp que se perdiam no histórico, sem registro de cargas, repetições ou evolução semana a semana. Sem controle de descanso entre séries, sem histórico de tempo treinando, sem saber o que funcionou.",
+    "problemItems": [
+      "Fichas perdidas no meio do histórico do WhatsApp",
+      "Sem registro de cargas ou evolução semana a semana",
+      "Sem controle de tempo de descanso entre séries",
+      "Fichas antigas inacessíveis — sem saber o que funcionou",
+      "Dificuldade de adaptar treinos conforme a evolução"
+    ],
+    "what": "O que é",
+    "whatDesc": "Astreon é um gerenciador de fichas de treino simples e completo. Organiza treinos, registra progresso e mantém o histórico — sem depender de WhatsApp, bloco de notas ou memória. Planejado desde o início como produto multi-tenant, pensando em atender tanto iniciantes quanto instrutores e professores de academia.",
+    "how": "Como funciona",
+    "howFlows": [
+      {
+        "title": "Criando uma ficha de treino",
+        "steps": [
+          "Usuário cria uma nova ficha com nome e período de vida",
+          "Separa em dias/grupos (Treino A, B, C / Upper, Lower, etc.)",
+          "Para cada dia, adiciona exercícios com carga, repetições e tempo de descanso",
+          "Pode adicionar anotações específicas por exercício"
+        ]
+      },
+      {
+        "title": "Modo Treino (na academia)",
+        "steps": [
+          "Abre a ficha ativa e seleciona o dia",
+          "Cronômetro geral inicia contando o tempo na academia",
+          "Para cada série concluída, cronômetro de descanso inicia automaticamente",
+          "Anotações durante o treino (ex: 'aumentei carga hoje')",
+          "Ao finalizar: tempo total registrado, anotações salvas no histórico"
+        ]
+      },
+      {
+        "title": "Revisando o histórico",
+        "steps": [
+          "Acessa fichas anteriores filtrando por mês ou período",
+          "Visualiza cada dia de treino com suas anotações",
+          "Acompanha evolução de cargas, tempo e volume ao longo do tempo"
+        ]
+      },
+      {
+        "title": "Ciclo de vida da ficha",
+        "steps": [
+          "App acompanha o período definido na criação",
+          "Aviso quando a ficha está próxima de vencer",
+          "Ao vencer, sugere criar nova ficha e arquiva a antiga automaticamente"
+        ]
+      }
+    ],
+    "arch": "Arquitetura & Entidades",
+    "mvp": "MVP",
+    "postMvp": "Pós-MVP",
+    "mvpEntities": [
+      { "name": "User", "desc": "Quem usa o app. Nome, email, senha." },
+      {
+        "name": "WorkoutPlan",
+        "desc": "Ficha de treino com período de vida e status."
+      },
+      {
+        "name": "TrainingDay",
+        "desc": "Grupo de treino dentro de uma ficha (Treino A, B, C)."
+      },
+      {
+        "name": "Exercise",
+        "desc": "Catálogo global de exercícios pré-cadastrados."
+      },
+      {
+        "name": "WorkoutSet",
+        "desc": "Exercício na ficha com carga, reps e descanso configurados."
+      }
+    ],
+    "postMvpEntities": [
+      {
+        "name": "TrainingSession",
+        "desc": "Registro real de uma vez que o usuário treinou."
+      },
+      {
+        "name": "SetLog",
+        "desc": "Registro de cada série com carga e reps reais."
+      },
+      {
+        "name": "Note",
+        "desc": "Anotação livre ligada a exercício, sessão ou dia."
+      }
+    ],
+    "roadmap": "Roadmap",
+    "roadmapPhases": [
+      {
+        "phase": "Fase 1 — MVP",
+        "color": "accent",
+        "items": [
+          "Criar fichas de treino com exercícios pré-cadastrados",
+          "Modo Treino ativo (cronômetro de descanso, marcar série, tempo total)",
+          "Ciclo de vida da ficha (aviso de vencimento, sugestão de nova ficha)",
+          "Histórico de fichas com anotações",
+          "PWA para melhor integração mobile"
+        ]
+      },
+      {
+        "phase": "Fase 2 — Para Profissionais",
+        "color": "white",
+        "items": [
+          "RBAC com níveis de acesso (Admin, Instrutor, Personal, Aluno)",
+          "Gestão de alunos e fichas de terceiros",
+          "Gerenciamento de mensalidades com notificações",
+          "Geração de PDF por dia de treino"
+        ]
+      },
+      {
+        "phase": "Fase 3 — Inteligência / IA",
+        "color": "cyan",
+        "items": [
+          "Geração de fichas personalizadas por IA baseada no perfil e histórico",
+          "IA com acesso ao histórico para sugestões embasadas",
+          "Comparativo visual de evolução (gráficos de carga, tempo, volume)"
+        ]
+      }
+    ],
+    "viewRepo": "ver repositório"
+  },
+
+  "nebula": {
+    "back": "voltar ao portfólio",
+    "status": "WIP",
+    "description": "CLI para scaffold de projetos com templates opinados — pule o boilerplate, comece pelo que importa.",
+    "repo": "Repositório",
+    "problem": "O Problema",
+    "problemDesc": "Todo projeto novo começa igual: configurar TypeScript, adicionar auth, conectar ORM, criar error handler global, organizar a estrutura de pastas. Horas de setup antes de escrever uma linha de código que realmente importa — e sempre do mesmo jeito.",
+    "what": "O que é",
+    "whatDesc": "Nebula nasceu como ferramenta pessoal: um CLI interativo que gera projetos completos com um único comando, do jeito certo desde o início. Opinado por design — porque as melhores ferramentas têm ponto de vista.",
+    "generates": "O que gera",
+    "generatesGroups": [
+      {
+        "title": "Estrutura base",
+        "items": [
+          "Projeto NestJS com TypeScript configurado",
+          "Detecção automática de package manager (pnpm, npm ou yarn)",
+          "Error handler global já integrado",
+          "Organização de pastas opinada e escalável"
+        ]
+      },
+      {
+        "title": "Autenticação completa",
+        "items": [
+          "Access Token + Refresh Token com refresh rotation",
+          "HttpOnly Cookies para segurança",
+          "Strategies, Guards, Interceptors e Decorators prontos",
+          "Sem precisar configurar nada — funciona no primeiro run"
+        ]
+      },
+      {
+        "title": "Banco de dados",
+        "items": [
+          "Prisma ORM integrado e configurado",
+          "Schema base pronto para extensão"
+        ]
+      }
+    ],
+    "roadmap": "Roadmap",
+    "roadmapPhases": [
+      {
+        "phase": "v1 — Em desenvolvimento",
+        "color": "accent",
+        "items": [
+          "Publicação no npm",
+          "Swagger integrado automaticamente",
+          "Changelog automático via Conventional Commits"
+        ]
+      },
+      {
+        "phase": "v2 — Planejado",
+        "color": "white",
+        "items": [
+          "Flags de linha de comando (--typescript, etc.)",
+          "nebula add — adicionar módulos em projetos existentes",
+          "Suporte a Fastify puro como alternativa ao NestJS",
+          "Templates de frontend (React + Vite, Next.js)"
+        ]
+      }
+    ],
+    "viewRepo": "ver repositório"
+  }
+}

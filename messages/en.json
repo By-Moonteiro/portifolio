@@ -1,0 +1,294 @@
+{
+  "hero": {
+    "title": "Wagner Monteiro",
+    "role": "Backend & Full Stack Developer",
+    "description": "Building solutions with Node on the back, React on the front and TypeScript in everything.",
+    "downloadCV": "Download CV",
+    "viewProjects": "View Projects"
+  },
+
+  "about": {
+    "title": "ABOUT",
+    "badge": "Under construction — heading to my first job in the field",
+    "p1": "I started my programming journey in February 2025. But only began dedicating myself for real in October 2025. Since then, I've maintained consistency and built real projects that solve real problems.",
+    "p1Keywords": "February 2025,October 2025,consistency,real projects,real problems",
+    "p2": "Today my focus is on backend with Node.js, NestJS, PostgreSQL and Prisma, building APIs and products with scalable architecture. In parallel, I evolve on the frontend with React, Next.js and Tailwind.",
+    "p2Keywords": "Node.js,NestJS,PostgreSQL,Prisma,React,Next.js,Tailwind",
+    "p3": "My goal is to grow as a backend or full stack developer, strengthening fundamentals, architecture, integrations, tests and software best practices.",
+    "p3Keywords": "backend,full stack,fundamentals,architecture,integrations,tests,best practices"
+  },
+
+  "contact": {
+    "title": "CONTACT",
+    "heading": "Let's talk?",
+    "subheading": "Open to opportunities and collaborations."
+  },
+
+  "skills": {
+    "title": "SKILLS",
+    "learning": "Learning",
+    "learningSubtitle": "actively in progress",
+    "categories": {
+      "languages": "Programming Languages",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "database": "Database",
+      "infra": "Infra & Deploy",
+      "tools": "Tools"
+    }
+  },
+
+  "experience": {
+    "title": "EXPERIENCE & EDUCATION",
+    "history": "Work History",
+    "soon": "Coming soon",
+    "firstJob": "First opportunity in the field",
+    "historyPlaceholder": "Professional experience history will be added soon.",
+    "education": "Education",
+    "inProgress": "Courses In Progress",
+    "certifications": "Certifications",
+    "ongoing": "In progress",
+    "degree": "Software Engineering",
+    "period": "2026 → In progress"
+  },
+
+  "github": {
+    "title": "GITHUB",
+    "contributions": "Contributions",
+    "repos": "Public Repositories",
+    "followers": "Followers",
+    "graphTitle": "Contribution Graph — last 365 days",
+    "viewProfile": "View profile",
+    "less": "less",
+    "more": "more",
+    "loading": "Loading...",
+    "contributionsTooltip": "contributions"
+  },
+
+  "projects": {
+    "title": "PROJECTS",
+    "filters": {
+      "all": "All",
+      "fullstack": "Fullstack",
+      "backend": "Backend"
+    },
+    "viewDetails": "View details",
+    "repo": "Repo",
+    "demo": "View Online",
+    "items": {
+      "astreon": {
+        "description": "Workout sheet manager built as a real product — multi-tenant, with evolution history and a structure that grows with the user."
+      },
+      "nebula": {
+        "description": "CLI for project scaffolding with opinionated templates — skip the boilerplate, start with what matters."
+      }
+    }
+  },
+
+  "nav": {
+    "home": "home",
+    "projects": "projects",
+    "skills": "skills",
+    "about": "about",
+    "github": "github",
+    "experience": "experience",
+    "contact": "contact"
+  },
+
+  "astreon": {
+    "back": "back to portfolio",
+    "status": "WIP",
+    "description": "Workout sheet manager built as a real product — multi-tenant, with evolution history and a structure that grows with the user.",
+    "repo": "Repository",
+    "demo": "Demo",
+    "preview": "Preview",
+    "previewDesc": "Some screens of Astreon in action.",
+    "previewImages": [
+      { "alt": "Login screen" },
+      { "alt": "Dashboard" },
+      { "alt": "Workout mode" },
+      { "alt": "History" }
+    ],
+    "problem": "The Problem",
+    "problemDesc": "Astreon was born from a real daily pain — workout sheets noted on WhatsApp that got lost in the history, with no record of weights, reps or week-to-week progress. No rest timer between sets, no training time history, no way to know what worked.",
+    "problemItems": [
+      "Sheets lost in WhatsApp history",
+      "No record of weights or week-to-week progress",
+      "No rest timer between sets",
+      "Old sheets inaccessible — no way to know what worked",
+      "Hard to adapt workouts as you progress"
+    ],
+    "what": "What is it",
+    "whatDesc": "Astreon is a simple and complete workout sheet manager. Organizes workouts, tracks progress and keeps history — without relying on WhatsApp, notes or memory. Planned from the start as a multi-tenant product, aiming to serve both beginners and personal trainers.",
+    "how": "How it works",
+    "howFlows": [
+      {
+        "title": "Creating a workout sheet",
+        "steps": [
+          "User creates a new sheet with a name and lifetime period",
+          "Splits into days/groups (Workout A, B, C / Upper, Lower, etc.)",
+          "For each day, adds exercises with weight, reps and rest time",
+          "Can add specific notes per exercise"
+        ]
+      },
+      {
+        "title": "Workout Mode (at the gym)",
+        "steps": [
+          "Opens the active sheet and selects the day",
+          "General timer starts counting gym time",
+          "For each completed set, rest timer starts automatically",
+          "Notes during the workout (e.g. 'increased weight today')",
+          "When done: total time recorded, notes saved to history"
+        ]
+      },
+      {
+        "title": "Reviewing history",
+        "steps": [
+          "Access previous sheets filtered by month or period",
+          "View each training day with its notes",
+          "Track progress in weights, time and volume over time"
+        ]
+      },
+      {
+        "title": "Sheet lifecycle",
+        "steps": [
+          "App tracks the period defined at creation",
+          "Alert when sheet is close to expiring",
+          "When expired, suggests creating a new sheet and archives the old one automatically"
+        ]
+      }
+    ],
+    "arch": "Architecture & Entities",
+    "mvp": "MVP",
+    "postMvp": "Post-MVP",
+    "mvpEntities": [
+      { "name": "User", "desc": "Who uses the app. Name, email, password." },
+      {
+        "name": "WorkoutPlan",
+        "desc": "Workout sheet with lifetime period and status."
+      },
+      {
+        "name": "TrainingDay",
+        "desc": "Training group within a sheet (Workout A, B, C)."
+      },
+      {
+        "name": "Exercise",
+        "desc": "Global catalog of pre-registered exercises."
+      },
+      {
+        "name": "WorkoutSet",
+        "desc": "Exercise in the sheet with configured weight, reps and rest."
+      }
+    ],
+    "postMvpEntities": [
+      {
+        "name": "TrainingSession",
+        "desc": "Real record of a time the user trained."
+      },
+      {
+        "name": "SetLog",
+        "desc": "Record of each set with real weight and reps."
+      },
+      {
+        "name": "Note",
+        "desc": "Free note linked to an exercise, session or day."
+      }
+    ],
+    "roadmap": "Roadmap",
+    "roadmapPhases": [
+      {
+        "phase": "Phase 1 — MVP",
+        "color": "accent",
+        "items": [
+          "Create workout sheets with pre-registered exercises",
+          "Active Workout Mode (rest timer, mark set, total time)",
+          "Sheet lifecycle (expiry alert, new sheet suggestion)",
+          "Sheet history with notes",
+          "PWA for better mobile integration"
+        ]
+      },
+      {
+        "phase": "Phase 2 — For Professionals",
+        "color": "white",
+        "items": [
+          "RBAC with access levels (Admin, Instructor, Personal, Student)",
+          "Student and third-party sheet management",
+          "Monthly fee management with notifications",
+          "PDF generation per training day"
+        ]
+      },
+      {
+        "phase": "Phase 3 — Intelligence / AI",
+        "color": "cyan",
+        "items": [
+          "AI-generated personalized sheets based on profile and history",
+          "AI with access to history for data-driven suggestions",
+          "Visual progress comparison (weight, time and volume charts)"
+        ]
+      }
+    ],
+    "viewRepo": "view repository"
+  },
+
+  "nebula": {
+    "back": "back to portfolio",
+    "status": "WIP",
+    "description": "CLI for project scaffolding with opinionated templates — skip the boilerplate, start with what matters.",
+    "repo": "Repository",
+    "problem": "The Problem",
+    "problemDesc": "Every new project starts the same way: configure TypeScript, add auth, connect ORM, create a global error handler, organize the folder structure. Hours of setup before writing a single line of code that actually matters — and always the same way.",
+    "what": "What is it",
+    "whatDesc": "Nebula was born as a personal tool: an interactive CLI that generates complete projects with a single command, done right from the start. Opinionated by design — because the best tools have a point of view.",
+    "generates": "What it generates",
+    "generatesGroups": [
+      {
+        "title": "Base structure",
+        "items": [
+          "NestJS project with TypeScript configured",
+          "Automatic package manager detection (pnpm, npm or yarn)",
+          "Global error handler already integrated",
+          "Opinionated and scalable folder structure"
+        ]
+      },
+      {
+        "title": "Full authentication",
+        "items": [
+          "Access Token + Refresh Token with refresh rotation",
+          "HttpOnly Cookies for security",
+          "Strategies, Guards, Interceptors and Decorators ready to use",
+          "No configuration needed — works on first run"
+        ]
+      },
+      {
+        "title": "Database",
+        "items": [
+          "Prisma ORM integrated and configured",
+          "Base schema ready for extension"
+        ]
+      }
+    ],
+    "roadmap": "Roadmap",
+    "roadmapPhases": [
+      {
+        "phase": "v1 — In development",
+        "color": "accent",
+        "items": [
+          "npm publication",
+          "Swagger integrated automatically",
+          "Automatic changelog via Conventional Commits"
+        ]
+      },
+      {
+        "phase": "v2 — Planned",
+        "color": "white",
+        "items": [
+          "Command line flags (--typescript, etc.)",
+          "nebula add — add modules to existing projects",
+          "Pure Fastify support as an alternative to NestJS",
+          "Frontend templates (React + Vite, Next.js)"
+        ]
+      }
+    ],
+    "viewRepo": "view repository"
+  }
+}
