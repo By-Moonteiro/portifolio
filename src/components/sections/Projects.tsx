@@ -6,70 +6,7 @@ import ProjectModal from "./projects/ProjectModal";
 import type { Project } from "./projects/types";
 import { motion } from "framer-motion";
 
-const FILTERS = [
-  {
-    label: "Todos",
-    value: "all",
-  },
-  {
-    label: "Fullstack",
-    value: "fullstack",
-  },
-  {
-    label: "Backend",
-    value: "backend",
-  },
-] as const;
-
 type Filter = (typeof FILTERS)[number]["value"];
-
-const projects: Project[] = [
-  {
-    name: "Astreon",
-    type: "fullstack",
-    slug: "astreon",
-    description:
-      "Gerenciador de fichas de treino pensado como produto real — multi-tenant, com histórico de evolução e estrutura que cresce junto com o usuário.",
-    status: "WIP",
-    year: 2026,
-    stack: [
-      "NestJS",
-      "TypeScript",
-      "PostgreSQL",
-      "Prisma",
-      "Docker",
-      "React",
-      "Tailwind",
-    ],
-    repo: "https://github.com/By-Moonteiro/astreon",
-    deploy: "https://astreon.app/",
-    details: {
-      description:
-        "Gerenciador de fichas de treino pensado como produto real — multi-tenant, com histórico de evolução e estrutura que cresce junto com o usuário.",
-      problem: "Em breve.",
-      solution: "Em breve.",
-      impact: "Em breve.",
-    },
-  },
-  {
-    name: "Nebula",
-    slug: "nebula",
-    type: "other",
-    description:
-      "CLI para scaffold de projetos com templates opinados — pule o boilerplate, comece pelo que importa.",
-    status: "WIP",
-    year: 2026,
-    stack: ["NestJS", "TypeScript", "Node", "Prisma", "JWT", "Fastify"],
-    repo: "https://github.com/By-Moonteiro/nebula",
-    details: {
-      description:
-        "CLI para scaffold de projetos com templates opinados — pule o boilerplate, comece pelo que importa.",
-      problem: "Em breve.",
-      solution: "Em breve.",
-      impact: "Em breve.",
-    },
-  },
-];
 
 const containerVariants = {
   hidden: {},
@@ -78,9 +15,88 @@ const containerVariants = {
   },
 };
 
-export default function Projects() {
+interface Props {
+  title: string;
+  filters: {
+    all: string;
+    fullstack: string;
+    backend: string;
+  };
+  viewDetails: string;
+  repo: string;
+  demo: string;
+  description: { astreon: string; nebula: string };
+}
+
+export default function Projects({
+  title,
+  filters,
+  viewDetails,
+  repo,
+  demo,
+  descriptions,
+}: Props) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [filter, setFilter] = useState<Filter>("all");
+
+  const projects: Project[] = [
+    {
+      name: "Astreon",
+      type: "fullstack",
+      slug: "astreon",
+      description: descriptions.astreon,
+      status: "WIP",
+      year: 2026,
+      stack: [
+        "NestJS",
+        "TypeScript",
+        "PostgreSQL",
+        "Prisma",
+        "Docker",
+        "React",
+        "Tailwind",
+      ],
+      repo: repo,
+      deploy: demo,
+      details: {
+        description: descriptions.astreon,
+        problem: "Em breve.",
+        solution: "Em breve.",
+        impact: "Em breve.",
+      },
+    },
+    {
+      name: "Nebula",
+      slug: "nebula",
+      type: "other",
+      description: descriptions.nebula,
+      status: "WIP",
+      year: 2026,
+      stack: ["NestJS", "TypeScript", "Node", "Prisma", "JWT", "Fastify"],
+      repo: repo,
+      details: {
+        description: descriptions.nebula,
+        problem: "Em breve.",
+        solution: "Em breve.",
+        impact: "Em breve.",
+      },
+    },
+  ];
+
+  const FILTERS = [
+    {
+      label: filters.all,
+      value: "all",
+    },
+    {
+      label: filters.fullstack,
+      value: "fullstack",
+    },
+    {
+      label: filters.backend,
+      value: "backend",
+    },
+  ] as const;
 
   const filtered =
     filter === "all" ? projects : projects.filter((p) => p.type === filter);
@@ -95,7 +111,7 @@ export default function Projects() {
               className="font-mono text-sm tracking-widest whitespace-nowrap"
               style={{ color: "var(--accent)" }}
             >
-              ✦ PROJETOS
+              ✦ {title}
             </span>
             <div
               className="flex-1 h-px"
@@ -143,6 +159,9 @@ export default function Projects() {
                 key={project.name}
                 project={project}
                 onOpenModal={setSelectedProject}
+                viewDetails={viewDetails}
+                repo={repo}
+                demo={demo}
               />
             ))}
           </motion.div>

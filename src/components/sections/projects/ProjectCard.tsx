@@ -9,6 +9,9 @@ import { motion, easeOut } from "framer-motion";
 interface Props {
   project: Project;
   onOpenModal: (project: Project) => void;
+  viewDetails: string;
+  repo: string;
+  demo: string;
 }
 
 const cardVariants = {
@@ -20,7 +23,13 @@ const cardVariants = {
   },
 };
 
-export default function ProjectCard({ project, onOpenModal }: Props) {
+export default function ProjectCard({
+  project,
+  onOpenModal,
+  viewDetails,
+  repo,
+  demo,
+}: Props) {
   return (
     <motion.div
       variants={cardVariants}
@@ -134,7 +143,7 @@ export default function ProjectCard({ project, onOpenModal }: Props) {
               (e.currentTarget.style.color = "var(--foreground-muted)")
             }
           >
-            <FaGithub size={13} /> Repo
+            <FaGithub size={13} /> {repo}
           </a>
           {project.deploy && (
             <a
@@ -150,7 +159,7 @@ export default function ProjectCard({ project, onOpenModal }: Props) {
                 (e.currentTarget.style.color = "var(--foreground-muted)")
               }
             >
-              <ExternalLink size={13} /> Demo
+              <ExternalLink size={13} /> {demo}
             </a>
           )}
         </div>
@@ -161,7 +170,7 @@ export default function ProjectCard({ project, onOpenModal }: Props) {
             className="font-mono text-xs transition-all duration-200"
             style={{ color: "var(--accent)" }}
           >
-            ▶ Ver detalhes
+            ▶ {viewDetails}
           </Link>
         ) : (
           <button
@@ -174,7 +183,7 @@ export default function ProjectCard({ project, onOpenModal }: Props) {
               cursor: "pointer",
             }}
           >
-            ▶ Ver detalhes
+            ▶ {viewDetails}
           </button>
         )}
       </div>

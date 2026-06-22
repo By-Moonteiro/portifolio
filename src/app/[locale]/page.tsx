@@ -11,7 +11,7 @@ import About from "@/components/sections/About";
 import { getTranslations } from "next-intl/server";
 
 export default async function Home() {
-  const [stats, t, tAbout, tContact, tSkills, tExperience, tGithub] =
+  const [stats, t, tAbout, tContact, tSkills, tExperience, tGithub, tProjects] =
     await Promise.all([
       getGithubStats("By-Moonteiro"),
       getTranslations("hero"),
@@ -20,6 +20,7 @@ export default async function Home() {
       getTranslations("skills"),
       getTranslations("experience"),
       getTranslations("github"),
+      getTranslations("projects"),
     ]);
 
   return (
@@ -31,7 +32,21 @@ export default async function Home() {
         downloadCV={t("downloadCV")}
         viewProjects={t("viewProjects")}
       />
-      <Projects />
+      <Projects
+        title={tProjects("title")}
+        filters={{
+          all: tProjects("filters.all"),
+          fullstack: tProjects("filters.fullstack"),
+          backend: tProjects("filters.backend"),
+        }}
+        viewDetails={tProjects("viewDetails")}
+        repo={tProjects("repo")}
+        demo={tProjects("demo")}
+        descriptions={{
+          astreon: tProjects("items.astreon.description"),
+          nebula: tProjects("items.nebula.description"),
+        }}
+      />
       <Skills
         title={tSkills("title")}
         learning={tSkills("learning")}
