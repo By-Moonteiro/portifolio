@@ -2,15 +2,6 @@
 
 import { motion, easeOut } from "framer-motion";
 
-const education = [
-  {
-    degree: "Engenharia de Software",
-    institution: "UNINTER",
-    period: "2026 → Em andamento",
-    current: true,
-  },
-];
-
 interface Courses {
   name: string;
   institution: string;
@@ -18,29 +9,62 @@ interface Courses {
   done: boolean;
 }
 
-const CoursesInProgress: Courses[] = [
-  {
-    name: "HTML e CSS para Iniciantes",
-    institution: "Origamid",
-    period: "Em andamento",
-    done: false,
-  },
-  {
-    name: "React Completo",
-    institution: "Origamid",
-    period: "Em andamento",
-    done: false,
-  },
-  {
-    name: "Tailwind CSS",
-    institution: "Origamid",
-    period: "Em andamento",
-    done: false,
-  },
-];
-const certifications: Courses[] = [];
+const certificationsList: Courses[] = [];
 
-export default function Experience() {
+interface ExperienceProps {
+  title: string;
+  history: string;
+  soon: string;
+  firstJob: string;
+  historyPlaceholder: string;
+  education: string;
+  inProgress: string;
+  certifications: string;
+  degree: string;
+  period: string;
+}
+
+export default function Experience({
+  title,
+  history,
+  soon,
+  firstJob,
+  historyPlaceholder,
+  education,
+  inProgress,
+  certifications,
+  degree,
+  period,
+}: ExperienceProps) {
+  const CoursesInProgress: Courses[] = [
+    {
+      name: "HTML e CSS para Iniciantes",
+      institution: "Origamid",
+      period: "Em andamento",
+      done: false,
+    },
+    {
+      name: "React Completo",
+      institution: "Origamid",
+      period: "Em andamento",
+      done: false,
+    },
+    {
+      name: "Tailwind CSS",
+      institution: "Origamid",
+      period: "Em andamento",
+      done: false,
+    },
+  ];
+
+  const educationList = [
+    {
+      degree: degree,
+      institution: "UNINTER",
+      period: period,
+      current: true,
+    },
+  ];
   return (
     <section id="experiencia" className="relative z-10 py-20 px-6">
       <div className="max-w-5xl mx-auto flex flex-col gap-12">
@@ -50,7 +74,7 @@ export default function Experience() {
             className="font-mono text-sm tracking-widest whitespace-nowrap"
             style={{ color: "var(--accent)" }}
           >
-            ✦ EXPERIÊNCIA & FORMAÇÃO
+            ✦ {title}
           </span>
           <div
             className="flex-1 h-px"
@@ -87,7 +111,7 @@ export default function Experience() {
                 textShadow: "0 0 10px rgba(167,139,250,0.5)",
               }}
             >
-              Histórico Profissional
+              {history}
             </span>
 
             <div className="flex gap-4">
@@ -121,21 +145,20 @@ export default function Experience() {
                     className="font-mono text-sm font-bold"
                     style={{ color: "var(--foreground)" }}
                   >
-                    Em breve
+                    {soon}
                   </span>
                 </div>
                 <span
                   className="font-mono text-xs"
                   style={{ color: "var(--accent)" }}
                 >
-                  Primeira oportunidade na área
+                  {firstJob}
                 </span>
                 <p
                   className="text-xs leading-relaxed"
                   style={{ color: "var(--foreground-muted)" }}
                 >
-                  Histórico de experiências profissionais na área será
-                  adicionado em breve.
+                  {historyPlaceholder}
                 </p>
               </div>
             </div>
@@ -162,10 +185,10 @@ export default function Experience() {
                   textShadow: "0 0 10px rgba(255,255,255,0.5)",
                 }}
               >
-                Formação
+                {education.title}
               </span>
 
-              {education.map((edu) => (
+              {educationList.map((edu) => (
                 <div
                   key={edu.degree}
                   className="flex flex-col gap-1 p-5 rounded-sm transition-all duration-200"
@@ -217,7 +240,7 @@ export default function Experience() {
                     textShadow: "0 0 10px rgba(103,232,249,0.5)",
                   }}
                 >
-                  Cursos Em Andamento
+                  {inProgress}
                 </span>
 
                 <div className="flex flex-col gap-2">
@@ -242,7 +265,7 @@ export default function Experience() {
             )}
 
             {/* Certificações */}
-            {certifications.length > 0 && (
+            {certificationsList.length > 0 && (
               <div className="flex flex-col gap-4">
                 <span
                   className="font-mono text-xs tracking-widest uppercase font-bold"
@@ -251,11 +274,11 @@ export default function Experience() {
                     textShadow: "0 0 10px rgba(103,232,249,0.5)",
                   }}
                 >
-                  Certificações
+                  {certifications}
                 </span>
 
                 <div className="flex flex-col gap-2">
-                  {certifications.map((cert) => (
+                  {certificationsList.map((cert) => (
                     <span
                       key={cert.name}
                       className="font-mono text-xs transition-colors duration-200 cursor-default"
