@@ -6,8 +6,6 @@ import ProjectModal from "./projects/ProjectModal";
 import type { Project } from "./projects/types";
 import { motion } from "framer-motion";
 
-type Filter = (typeof FILTERS)[number]["value"];
-
 const containerVariants = {
   hidden: {},
   visible: {
@@ -25,7 +23,7 @@ interface Props {
   viewDetails: string;
   repo: string;
   demo: string;
-  description: { astreon: string; nebula: string };
+  descriptions: { astreon: string; nebula: string };
 }
 
 export default function Projects({
@@ -97,6 +95,8 @@ export default function Projects({
       value: "backend",
     },
   ] as const;
+
+  type Filter = (typeof FILTERS)[number]["value"];
 
   const filtered =
     filter === "all" ? projects : projects.filter((p) => p.type === filter);
