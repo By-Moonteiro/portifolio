@@ -50,62 +50,6 @@ const cardVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: easeOut } },
 };
 
-const skills: SkillGroup[] = [
-  {
-    category: "Linguagens de Programação",
-    skills: [{ name: "TypeScript", icon: <SiTypescript />, stars: 4 }],
-  },
-  {
-    category: "Backend",
-    skills: [
-      { name: "NestJS", icon: <SiNestjs />, stars: 4 },
-      { name: "Node.js", icon: <SiNodedotjs />, stars: 4 },
-      { name: "Fastify", icon: <SiFastify />, stars: 3 },
-      { name: "Prisma", icon: <SiPrisma />, stars: 4 },
-      { name: "Swagger", icon: <SiSwagger />, stars: 3 },
-    ],
-  },
-  {
-    category: "Frontend",
-    skills: [
-      { name: "React", icon: <SiReact />, stars: 3 },
-      { name: "Next.js", icon: <SiNextdotjs />, stars: 3 },
-      { name: "Tailwind", icon: <SiTailwindcss />, stars: 3 },
-      { name: "Shadcn/ui", icon: <SiShadcnui />, stars: 3 },
-    ],
-  },
-  {
-    category: "Banco de Dados",
-    skills: [{ name: "PostgreSQL", icon: <SiPostgresql />, stars: 4 }],
-  },
-  {
-    category: "Infra & Deploy",
-    skills: [
-      { name: "Docker", icon: <SiDocker />, stars: 3 },
-      { name: "Git", icon: <SiGit />, stars: 4 },
-      { name: "Render", icon: <SiRender />, stars: 3 },
-      { name: "Vercel", icon: <SiVercel />, stars: 3 },
-      { name: "Neon", icon: <SiPostgresql />, stars: 3 },
-    ],
-  },
-  {
-    category: "Ferramentas",
-    skills: [
-      { name: "GitHub Copilot", icon: <SiGithubcopilot />, stars: 3 },
-      { name: "Claude", icon: <RiOpenaiFill />, stars: 4 },
-      { name: "Visual Studio Code", icon: <VscVscode />, stars: 4 },
-      { name: "IntelliJ IDEA", icon: <SiIntellijidea />, stars: 3 },
-    ],
-  },
-  {
-    category: "Aprendendo",
-    skills: [
-      { name: "Java", icon: <FaJava />, stars: 2 },
-      { name: "Spring Boot", icon: <SiSpring />, stars: 1 },
-    ],
-  },
-];
-
 function Stars({
   count,
   learning = false,
@@ -131,7 +75,82 @@ function Stars({
   );
 }
 
-export default function Skills() {
+interface SkillsProps {
+  title: string;
+  learning: string;
+  learningSubtitle: string;
+  categories: {
+    languages: string;
+    backend: string;
+    frontend: string;
+    database: string;
+    infra: string;
+    tools: string;
+  };
+}
+
+export default function Skills({
+  title,
+  learning,
+  learningSubtitle,
+  categories,
+}: SkillsProps) {
+  const skills: SkillGroup[] = [
+    {
+      category: categories.languages,
+      skills: [{ name: "TypeScript", icon: <SiTypescript />, stars: 4 }],
+    },
+    {
+      category: categories.backend,
+      skills: [
+        { name: "NestJS", icon: <SiNestjs />, stars: 4 },
+        { name: "Node.js", icon: <SiNodedotjs />, stars: 4 },
+        { name: "Fastify", icon: <SiFastify />, stars: 3 },
+        { name: "Prisma", icon: <SiPrisma />, stars: 4 },
+        { name: "Swagger", icon: <SiSwagger />, stars: 3 },
+      ],
+    },
+    {
+      category: categories.frontend,
+      skills: [
+        { name: "React", icon: <SiReact />, stars: 3 },
+        { name: "Next.js", icon: <SiNextdotjs />, stars: 3 },
+        { name: "Tailwind", icon: <SiTailwindcss />, stars: 3 },
+        { name: "Shadcn/ui", icon: <SiShadcnui />, stars: 3 },
+      ],
+    },
+    {
+      category: categories.database,
+      skills: [{ name: "PostgreSQL", icon: <SiPostgresql />, stars: 4 }],
+    },
+    {
+      category: categories.infra,
+      skills: [
+        { name: "Docker", icon: <SiDocker />, stars: 3 },
+        { name: "Git", icon: <SiGit />, stars: 4 },
+        { name: "Render", icon: <SiRender />, stars: 3 },
+        { name: "Vercel", icon: <SiVercel />, stars: 3 },
+        { name: "Neon", icon: <SiPostgresql />, stars: 3 },
+      ],
+    },
+    {
+      category: categories.tools,
+      skills: [
+        { name: "GitHub Copilot", icon: <SiGithubcopilot />, stars: 3 },
+        { name: "Claude", icon: <RiOpenaiFill />, stars: 4 },
+        { name: "Visual Studio Code", icon: <VscVscode />, stars: 4 },
+        { name: "IntelliJ IDEA", icon: <SiIntellijidea />, stars: 3 },
+      ],
+    },
+    {
+      category: learning,
+      skills: [
+        { name: "Java", icon: <FaJava />, stars: 2 },
+        { name: "Spring Boot", icon: <SiSpring />, stars: 1 },
+      ],
+    },
+  ];
+
   return (
     <section id="skills" className="relative z-10 py-20 px-6">
       <div className="max-w-5xl mx-auto flex flex-col gap-12">
@@ -141,7 +160,7 @@ export default function Skills() {
             className="font-mono text-sm tracking-widest whitespace-nowrap"
             style={{ color: "var(--accent)" }}
           >
-            ✦ SKILLS
+            ✦ {title}
           </span>
           <div
             className="flex-1 h-px"
@@ -158,7 +177,7 @@ export default function Skills() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
         >
           {skills.map((group) => {
-            const isLearning = group.category === "Aprendendo";
+            const isLearning = group.category === learning;
             return (
               <motion.div
                 variants={cardVariants}
@@ -184,7 +203,7 @@ export default function Skills() {
                       className="font-mono text-xs"
                       style={{ color: "var(--foreground-muted)", opacity: 0.6 }}
                     >
-                      em progresso ativo
+                      {learningSubtitle}
                     </span>
                   )}
                   <div
