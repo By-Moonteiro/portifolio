@@ -54,8 +54,8 @@ export default function Projects({
         "React",
         "Tailwind",
       ],
-      repo: repo,
-      deploy: demo,
+      repo: "https://github.com/By-Moonteiro/astreon",
+      deploy: "https://astreon.app/",
       details: {
         description: descriptions.astreon,
         problem: "Em breve.",
@@ -71,7 +71,7 @@ export default function Projects({
       status: "WIP",
       year: 2026,
       stack: ["NestJS", "TypeScript", "Node", "Prisma", "JWT", "Fastify"],
-      repo: repo,
+      repo: "https://github.com/By-Moonteiro/nebula",
       details: {
         description: descriptions.nebula,
         problem: "Em breve.",
