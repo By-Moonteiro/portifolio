@@ -42,41 +42,39 @@ function Highlighted({ text, keywords }: { text: string; keywords: string[] }) {
   );
 }
 
-export default function About() {
+interface AboutProps {
+  title: string;
+  badge: string;
+  p1: string;
+  p1Keywords: string[];
+  p2: string;
+  p2Keywords: string[];
+  p3: string;
+  p3Keywords: string[];
+}
+
+export default function About({
+  title,
+  badge,
+  p1,
+  p1Keywords,
+  p2,
+  p2Keywords,
+  p3,
+  p3Keywords,
+}: AboutProps) {
   const paragraphs: { text: string; keywords: string[] }[] = [
     {
-      text: `Comecei minha jornada na programação em Fevereiro de 2025. Mas só comecei a me dedicar de fato em outubro de 2025. Desde então, mantenho consistência e construo projetos reais, que resolvem problemas reais.`,
-      keywords: [
-        "Fevereiro de 2025",
-        "outubro de 2025",
-        "consistência",
-        "projetos reais",
-        "problemas reais",
-      ],
+      text: p1,
+      keywords: p1Keywords,
     },
     {
-      text: "Hoje meu foco está em backend com Node.js, NestJS, PostgreSQL e Prisma, construindo APIs e produtos com arquitetura escalável. Paralelamente, evoluo no frontend com React, Next.js e Tailwind.",
-      keywords: [
-        "Node.js",
-        "NestJS",
-        "PostgreSQL",
-        "Prisma",
-        "React",
-        "Next.js",
-        "Tailwind",
-      ],
+      text: p2,
+      keywords: p2Keywords,
     },
     {
-      text: "Meu objetivo é crescer como desenvolvedor backend ou full stack, fortalecendo base, arquitetura, integrações, testes e boas práticas de software.",
-      keywords: [
-        "backend",
-        "full stack",
-        "base",
-        "arquitetura",
-        "integrações",
-        "testes",
-        "boas práticas",
-      ],
+      text: p3,
+      keywords: p3Keywords,
     },
   ];
 
@@ -89,7 +87,7 @@ export default function About() {
             className="font-mono text-sm tracking-widest whitespace-nowrap"
             style={{ color: "var(--accent)" }}
           >
-            ✦ SOBRE
+            ✦ {title}
           </span>
           <div
             className="flex-1 h-px"
@@ -140,7 +138,7 @@ export default function About() {
                 animation: "pulse 1.5s ease-in-out infinite",
               }}
             />
-            Em construção — rumo ao primeiro trabalho na área
+            {badge}
           </div>
         </motion.div>
       </div>

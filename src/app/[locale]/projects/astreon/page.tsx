@@ -5,6 +5,13 @@ import { FaGithub } from "react-icons/fa";
 import { ExternalLink, ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import { motion, easeOut } from "framer-motion";
+import { useTranslations } from "next-intl";
+
+const PHASE_COLORS: Record<string, string> = {
+  accent: "var(--accent)",
+  white: "#f0f0f0",
+  cyan: "#67e8f9",
+};
 
 const fadeUp = (delay: number) => ({
   initial: { opacity: 0, y: 20 },
@@ -12,7 +19,32 @@ const fadeUp = (delay: number) => ({
   transition: { duration: 0.5, ease: easeOut, delay },
 });
 
+const PREVIEW_SRCS = [
+  "/projects/moonfit/preview-1.png",
+  "/projects/moonfit/preview-2.png",
+  "/projects/moonfit/preview-3.png",
+  "/projects/moonfit/preview-4.png",
+];
+
 export default function AstreonPage() {
+  const t = useTranslations("astreon");
+
+  const previewImages = (t.raw("previewImages") as { alt: string }[]).map(
+    (img, i) => ({ src: PREVIEW_SRCS[i], alt: img.alt }),
+  );
+  const problemItems = t.raw("problemItems") as string[];
+  const howFlows = t.raw("howFlows") as { title: string; steps: string[] }[];
+  const mvpEntities = t.raw("mvpEntities") as { name: string; desc: string }[];
+  const postMvpEntities = t.raw("postMvpEntities") as {
+    name: string;
+    desc: string;
+  }[];
+  const roadmapPhases = t.raw("roadmapPhases") as {
+    phase: string;
+    color: string;
+    items: string[];
+  }[];
+
   return (
     <main className="relative z-10 min-h-screen px-6 py-24">
       <div className="max-w-3xl mx-auto flex flex-col gap-16">
@@ -23,7 +55,7 @@ export default function AstreonPage() {
             style={{ color: "var(--foreground-muted)" }}
           >
             <ArrowLeft size={13} />
-            voltar ao portfólio
+            {t("back")}
           </Link>
         </motion.div>
 
@@ -34,7 +66,7 @@ export default function AstreonPage() {
         >
           <Image
             src="/projetos/moonfit-icon.svg"
-            alt="MoonFit Banner"
+            alt="Astreon Banner"
             width={800}
             height={400}
             className="w-full h-auto rounded-sm"
@@ -42,7 +74,6 @@ export default function AstreonPage() {
           />
         </motion.div>
 
-        {/* Hero do projeto */}
         <div className="flex flex-col gap-6">
           <motion.div {...fadeUp(0.2)} className="flex items-center gap-3">
             <span
@@ -56,7 +87,7 @@ export default function AstreonPage() {
                   animation: "pulse 1.5s ease-in-out infinite",
                 }}
               />
-              WIP — 2026
+              {t("status")} — 2026
             </span>
           </motion.div>
 
@@ -79,9 +110,7 @@ export default function AstreonPage() {
             className="text-sm leading-relaxed max-w-xl"
             style={{ color: "var(--foreground-muted)" }}
           >
-            Gerenciador de fichas de treino pensado como produto real —
-            multi-tenant, com histórico de evolução e estrutura que cresce junto
-            com o usuário.
+            {t("description")}
           </motion.p>
 
           <motion.div {...fadeUp(0.5)} className="flex items-center gap-6">
@@ -92,8 +121,7 @@ export default function AstreonPage() {
               className="flex items-center gap-2 font-mono text-xs transition-colors duration-200"
               style={{ color: "var(--foreground-muted)" }}
             >
-              <FaGithub size={13} />
-              Repositório
+              <FaGithub size={13} /> {t("repo")}
             </a>
             <a
               href="https://astreon.app/"
@@ -102,8 +130,7 @@ export default function AstreonPage() {
               className="flex items-center gap-2 font-mono text-xs transition-colors duration-200"
               style={{ color: "var(--foreground-muted)" }}
             >
-              <ExternalLink size={13} />
-              Demo
+              <ExternalLink size={13} /> {t("demo")}
             </a>
           </motion.div>
 
@@ -139,20 +166,15 @@ export default function AstreonPage() {
         </div>
 
         <Divider />
-        <Section title="Preview">
+        <Section title={t("preview")}>
           <p
             className="text-sm leading-relaxed"
             style={{ color: "var(--foreground-muted)" }}
           >
-            Algumas telas do Astreon em funcionamento.
+            {t("previewDesc")}
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
-            {[
-              { src: "/projects/moonfit/preview-1.png", alt: "Tela de login" },
-              { src: "/projects/moonfit/preview-2.png", alt: "Dashboard" },
-              { src: "/projects/moonfit/preview-3.png", alt: "Modo treino" },
-              { src: "/projects/moonfit/preview-4.png", alt: "Histórico" },
-            ].map((img) => (
+            {previewImages.map((img) => (
               <div
                 key={img.src}
                 className="relative rounded-sm overflow-hidden"
@@ -194,25 +216,15 @@ export default function AstreonPage() {
         </Section>
 
         <Divider />
-        <Section title="O Problema">
+        <Section title={t("problem")}>
           <p
             style={{ color: "var(--foreground-muted)" }}
             className="text-sm leading-relaxed"
           >
-            O Astreon nasceu de uma dor real e diária — fichas de treino
-            anotadas no WhatsApp que se perdiam no histórico, sem registro de
-            cargas, repetições ou evolução semana a semana. Sem controle de
-            descanso entre séries, sem histórico de tempo treinando, sem saber o
-            que funcionou.
+            {t("problemDesc")}
           </p>
           <ul className="flex flex-col gap-2 mt-4">
-            {[
-              "Fichas perdidas no meio do histórico do WhatsApp",
-              "Sem registro de cargas ou evolução semana a semana",
-              "Sem controle de tempo de descanso entre séries",
-              "Fichas antigas inacessíveis — sem saber o que funcionou",
-              "Dificuldade de adaptar treinos conforme a evolução",
-            ].map((item) => (
+            {problemItems.map((item) => (
               <li
                 key={item}
                 className="flex items-start gap-2 font-mono text-xs"
@@ -226,59 +238,19 @@ export default function AstreonPage() {
         </Section>
 
         <Divider />
-        <Section title="O que é">
+        <Section title={t("what")}>
           <p
             className="text-sm leading-relaxed"
             style={{ color: "var(--foreground-muted)" }}
           >
-            Astreon é um gerenciador de fichas de treino simples e completo.
-            Organiza treinos, registra progresso e mantém o histórico — sem
-            depender de WhatsApp, bloco de notas ou memória. Planejado desde o
-            início como produto multi-tenant, pensando em atender tanto
-            iniciantes quanto instrutores e professores de academia.
+            {t("whatDesc")}
           </p>
         </Section>
 
         <Divider />
-        <Section title="Como funciona">
+        <Section title={t("how")}>
           <div className="flex flex-col gap-8">
-            {[
-              {
-                title: "Criando uma ficha de treino",
-                steps: [
-                  "Usuário cria uma nova ficha com nome e período de vida",
-                  "Separa em dias/grupos (Treino A, B, C / Upper, Lower, etc.)",
-                  "Para cada dia, adiciona exercícios com carga, repetições e tempo de descanso",
-                  "Pode adicionar anotações específicas por exercício",
-                ],
-              },
-              {
-                title: "Modo Treino (na academia)",
-                steps: [
-                  "Abre a ficha ativa e seleciona o dia",
-                  "Cronômetro geral inicia contando o tempo na academia",
-                  "Para cada série concluída, cronômetro de descanso inicia automaticamente",
-                  "Anotações durante o treino (ex: 'aumentei carga hoje')",
-                  "Ao finalizar: tempo total registrado, anotações salvas no histórico",
-                ],
-              },
-              {
-                title: "Revisando o histórico",
-                steps: [
-                  "Acessa fichas anteriores filtrando por mês ou período",
-                  "Visualiza cada dia de treino com suas anotações",
-                  "Acompanha evolução de cargas, tempo e volume ao longo do tempo",
-                ],
-              },
-              {
-                title: "Ciclo de vida da ficha",
-                steps: [
-                  "App acompanha o período definido na criação",
-                  "Aviso quando a ficha está próxima de vencer",
-                  "Ao vencer, sugere criar nova ficha e arquiva a antiga automaticamente",
-                ],
-              },
-            ].map((flow) => (
+            {howFlows.map((flow) => (
               <div key={flow.title} className="flex flex-col gap-3">
                 <span
                   className="font-mono text-xs tracking-widest uppercase"
@@ -306,35 +278,17 @@ export default function AstreonPage() {
         </Section>
 
         <Divider />
-        <Section title="Arquitetura & Entidades">
+        <Section title={t("arch")}>
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-3">
               <span
                 className="font-mono text-xs tracking-widest uppercase"
                 style={{ color: "var(--accent)" }}
               >
-                MVP
+                {t("mvp")}
               </span>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {[
-                  { name: "User", desc: "Quem usa o app. Nome, email, senha." },
-                  {
-                    name: "WorkoutPlan",
-                    desc: "Ficha de treino com período de vida e status.",
-                  },
-                  {
-                    name: "TrainingDay",
-                    desc: "Grupo de treino dentro de uma ficha (Treino A, B, C).",
-                  },
-                  {
-                    name: "Exercise",
-                    desc: "Catálogo global de exercícios pré-cadastrados.",
-                  },
-                  {
-                    name: "WorkoutSet",
-                    desc: "Exercício na ficha com carga, reps e descanso configurados.",
-                  },
-                ].map((entity) => (
+                {mvpEntities.map((entity) => (
                   <div
                     key={entity.name}
                     className="flex flex-col gap-1 p-4 rounded-sm"
@@ -364,23 +318,10 @@ export default function AstreonPage() {
                 className="font-mono text-xs tracking-widest uppercase"
                 style={{ color: "var(--foreground-muted)" }}
               >
-                Pós-MVP
+                {t("postMvp")}
               </span>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {[
-                  {
-                    name: "TrainingSession",
-                    desc: "Registro real de uma vez que o usuário treinou.",
-                  },
-                  {
-                    name: "SetLog",
-                    desc: "Registro de cada série com carga e reps reais.",
-                  },
-                  {
-                    name: "Note",
-                    desc: "Anotação livre ligada a exercício, sessão ou dia.",
-                  },
-                ].map((entity) => (
+                {postMvpEntities.map((entity) => (
                   <div
                     key={entity.name}
                     className="flex flex-col gap-1 p-4 rounded-sm"
@@ -410,44 +351,13 @@ export default function AstreonPage() {
         </Section>
 
         <Divider />
-        <Section title="Roadmap">
+        <Section title={t("roadmap")}>
           <div className="flex flex-col gap-6">
-            {[
-              {
-                phase: "Fase 1 — MVP",
-                color: "var(--accent)",
-                items: [
-                  "Criar fichas de treino com exercícios pré-cadastrados",
-                  "Modo Treino ativo (cronômetro de descanso, marcar série, tempo total)",
-                  "Ciclo de vida da ficha (aviso de vencimento, sugestão de nova ficha)",
-                  "Histórico de fichas com anotações",
-                  "PWA para melhor integração mobile",
-                ],
-              },
-              {
-                phase: "Fase 2 — Para Profissionais",
-                color: "#f0f0f0",
-                items: [
-                  "RBAC com níveis de acesso (Admin, Instrutor, Personal, Aluno)",
-                  "Gestão de alunos e fichas de terceiros",
-                  "Gerenciamento de mensalidades com notificações",
-                  "Geração de PDF por dia de treino",
-                ],
-              },
-              {
-                phase: "Fase 3 — Inteligência / IA",
-                color: "#67e8f9",
-                items: [
-                  "Geração de fichas personalizadas por IA baseada no perfil e histórico",
-                  "IA com acesso ao histórico para sugestões embasadas",
-                  "Comparativo visual de evolução (gráficos de carga, tempo, volume)",
-                ],
-              },
-            ].map((phase) => (
+            {roadmapPhases.map((phase) => (
               <div key={phase.phase} className="flex flex-col gap-3">
                 <span
                   className="font-mono text-xs tracking-widest uppercase"
-                  style={{ color: phase.color }}
+                  style={{ color: PHASE_COLORS[phase.color] }}
                 >
                   {phase.phase}
                 </span>
@@ -458,7 +368,12 @@ export default function AstreonPage() {
                       className="flex items-start gap-2 font-mono text-xs"
                       style={{ color: "var(--foreground-muted)" }}
                     >
-                      <span style={{ color: phase.color, opacity: 0.6 }}>
+                      <span
+                        style={{
+                          color: PHASE_COLORS[phase.color],
+                          opacity: 0.6,
+                        }}
+                      >
                         ▸
                       </span>
                       {item}
@@ -478,17 +393,17 @@ export default function AstreonPage() {
             style={{ color: "var(--foreground-muted)" }}
           >
             <ArrowLeft size={13} />
-            voltar ao portfólio
+            {t("back")}
           </Link>
           <a
-            href="https://github.com/By-Moonteiro/moon-fit"
+            href="https://github.com/By-Moonteiro/astreon"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 font-mono text-xs transition-colors duration-200"
             style={{ color: "var(--foreground-muted)" }}
           >
             <FaGithub size={13} />
-            ver repositório
+            {t("viewRepo")}
           </a>
         </div>
       </div>

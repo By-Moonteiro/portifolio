@@ -5,6 +5,13 @@ import { ArrowLeft } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import Image from "next/image";
 import { motion, easeOut } from "framer-motion";
+import { useTranslations } from "next-intl";
+
+const PHASE_COLORS: Record<string, string> = {
+  accent: "var(--accent)",
+  white: "#f0f0f0",
+  cyan: "#67e8f9",
+};
 
 const fadeUp = (delay: number) => ({
   initial: { opacity: 0, y: 20 },
@@ -13,6 +20,18 @@ const fadeUp = (delay: number) => ({
 });
 
 export default function NebulaPage() {
+  const t = useTranslations("nebula");
+
+  const generatesGroups = t.raw("generatesGroups") as {
+    title: string;
+    items: string[];
+  }[];
+  const roadmapPhases = t.raw("roadmapPhases") as {
+    phase: string;
+    color: string;
+    items: string[];
+  }[];
+
   return (
     <main className="relative z-10 min-h-screen px-6 py-24">
       <div className="max-w-3xl mx-auto flex flex-col gap-16">
@@ -23,7 +42,7 @@ export default function NebulaPage() {
             style={{ color: "var(--foreground-muted)" }}
           >
             <ArrowLeft size={13} />
-            voltar ao portfólio
+            {t("back")}
           </Link>
         </motion.div>
 
@@ -55,7 +74,7 @@ export default function NebulaPage() {
                   animation: "pulse 1.5s ease-in-out infinite",
                 }}
               />
-              WIP — 2026
+              {t("status")} — 2026
             </span>
           </motion.div>
 
@@ -78,8 +97,7 @@ export default function NebulaPage() {
             className="text-sm leading-relaxed max-w-xl"
             style={{ color: "var(--foreground-muted)" }}
           >
-            CLI para scaffold de projetos com templates opinados — pule o
-            boilerplate, comece pelo que importa.
+            {t("description")}
           </motion.p>
 
           <motion.a
@@ -91,7 +109,7 @@ export default function NebulaPage() {
             style={{ color: "var(--foreground-muted)" }}
           >
             <FaGithub size={13} />
-            Repositório
+            {t("repo")}
           </motion.a>
 
           <motion.div {...fadeUp(0.6)} className="flex flex-wrap gap-2">
@@ -119,28 +137,22 @@ export default function NebulaPage() {
         </div>
 
         <Divider />
-        <Section title="O Problema">
+        <Section title={t("problem")}>
           <p
             className="text-sm leading-relaxed"
             style={{ color: "var(--foreground-muted)" }}
           >
-            Todo projeto novo começa igual: configurar TypeScript, adicionar
-            auth, conectar ORM, criar error handler global, organizar a
-            estrutura de pastas. Horas de setup antes de escrever uma linha de
-            código que realmente importa — e sempre do mesmo jeito.
+            {t("problemDesc")}
           </p>
         </Section>
 
         <Divider />
-        <Section title="O que é">
+        <Section title={t("what")}>
           <p
             className="text-sm leading-relaxed"
             style={{ color: "var(--foreground-muted)" }}
           >
-            Nebula nasceu como ferramenta pessoal: um CLI interativo que gera
-            projetos completos com um único comando, do jeito certo desde o
-            início. Opinado por design — porque as melhores ferramentas têm
-            ponto de vista.
+            {t("whatDesc")}
           </p>
           <div
             className="mt-4 p-4 rounded-sm font-mono text-xs"
@@ -156,35 +168,9 @@ export default function NebulaPage() {
         </Section>
 
         <Divider />
-        <Section title="O que gera">
+        <Section title={t("generates")}>
           <div className="flex flex-col gap-6">
-            {[
-              {
-                title: "Estrutura base",
-                items: [
-                  "Projeto NestJS com TypeScript configurado",
-                  "Detecção automática de package manager (pnpm, npm ou yarn)",
-                  "Error handler global já integrado",
-                  "Organização de pastas opinada e escalável",
-                ],
-              },
-              {
-                title: "Autenticação completa",
-                items: [
-                  "Access Token + Refresh Token com refresh rotation",
-                  "HttpOnly Cookies para segurança",
-                  "Strategies, Guards, Interceptors e Decorators prontos",
-                  "Sem precisar configurar nada — funciona no primeiro run",
-                ],
-              },
-              {
-                title: "Banco de dados",
-                items: [
-                  "Prisma ORM integrado e configurado",
-                  "Schema base pronto para extensão",
-                ],
-              },
-            ].map((group) => (
+            {generatesGroups.map((group) => (
               <div key={group.title} className="flex flex-col gap-3">
                 <span
                   className="font-mono text-xs tracking-widest uppercase"
@@ -212,44 +198,29 @@ export default function NebulaPage() {
         </Section>
 
         <Divider />
-        <Section title="Roadmap">
+        <Section title={t("roadmap")}>
           <div className="flex flex-col gap-6">
-            {[
-              {
-                phase: "v1 — Em desenvolvimento",
-                color: "var(--accent)",
-                items: [
-                  "Publicação no npm",
-                  "Swagger integrado automaticamente",
-                  "Changelog automático via Conventional Commits",
-                ],
-              },
-              {
-                phase: "v2 — Planejado",
-                color: "#f0f0f0",
-                items: [
-                  "Flags de linha de comando (--typescript, etc.)",
-                  "nebula add — adicionar módulos em projetos existentes",
-                  "Suporte a Fastify puro como alternativa ao NestJS",
-                  "Templates de frontend (React + Vite, Next.js)",
-                ],
-              },
-            ].map((phase) => (
+            {roadmapPhases.map((phase) => (
               <div key={phase.phase} className="flex flex-col gap-3">
                 <span
                   className="font-mono text-xs tracking-widest uppercase"
-                  style={{ color: phase.color }}
+                  style={{ color: PHASE_COLORS[phase.color] }}
                 >
                   {phase.phase}
                 </span>
                 <ul className="flex flex-col gap-2">
-                  {phase.items.map((item, i) => (
+                  {phase.items.map((item) => (
                     <li
-                      key={i}
+                      key={item}
                       className="flex items-start gap-2 font-mono text-xs"
                       style={{ color: "var(--foreground-muted)" }}
                     >
-                      <span style={{ color: phase.color, opacity: 0.6 }}>
+                      <span
+                        style={{
+                          color: PHASE_COLORS[phase.color],
+                          opacity: 0.6,
+                        }}
+                      >
                         ▸
                       </span>
                       {item}
@@ -269,7 +240,7 @@ export default function NebulaPage() {
             style={{ color: "var(--foreground-muted)" }}
           >
             <ArrowLeft size={13} />
-            voltar ao portfólio
+            {t("back")}
           </Link>
           <a
             href="https://github.com/By-Moonteiro/nebula"
@@ -279,7 +250,7 @@ export default function NebulaPage() {
             style={{ color: "var(--foreground-muted)" }}
           >
             <FaGithub size={13} />
-            ver repositório
+            {t("viewRepo")}
           </a>
         </div>
       </div>

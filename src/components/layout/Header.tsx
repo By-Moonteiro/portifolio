@@ -4,21 +4,32 @@ import { useEffect, useState } from "react";
 import { Home, FolderGit2, Zap, Briefcase, Mail, User } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import { motion } from "framer-motion";
-
-const navLinks = [
-  { label: "home", href: "#", icon: <Home size={16} /> },
-  { label: "projetos", href: "#projetos", icon: <FolderGit2 size={16} /> },
-  { label: "skills", href: "#skills", icon: <Zap size={16} /> },
-  { label: "sobre", href: "#sobre", icon: <User size={16} /> },
-  { label: "github", href: "#github", icon: <FaGithub size={16} /> },
-  { label: "experiência", href: "#experiencia", icon: <Briefcase size={16} /> },
-  { label: "contato", href: "#contato", icon: <Mail size={16} /> },
-];
+import { useRouter, usePathname } from "next/navigation";
+import { useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 
 export default function Header() {
   const [active, setActive] = useState("#");
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
+  const t = useTranslations("nav");
+
+  const navLinks = [
+    { label: t("home"), href: "#", icon: <Home size={16} /> },
+    { label: t("projects"), href: "#projetos", icon: <FolderGit2 size={16} /> },
+    { label: t("skills"), href: "#skills", icon: <Zap size={16} /> },
+    { label: t("about"), href: "#sobre", icon: <User size={16} /> },
+    { label: t("github"), href: "#github", icon: <FaGithub size={16} /> },
+    {
+      label: t("experience"),
+      href: "#experiencia",
+      icon: <Briefcase size={16} />,
+    },
+    { label: t("contact"), href: "#contato", icon: <Mail size={16} /> },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -80,6 +91,42 @@ export default function Header() {
         >
           WM<span style={{ animation: "blink 1s step-end infinite" }}>_</span>
         </a>
+      </div>
+
+      <div className="fixed top-0 right-0 z-50 px-8 h-16 flex items-center">
+        <div
+          className="flex items-center gap-1 px-2 py-1.5 rounded-full"
+          style={{
+            backgroundColor: "rgba(10,10,10,0.8)",
+            backdropFilter: "blur(16px)",
+            border: "1px solid rgba(167,139,250,0.15)",
+          }}
+        >
+          {(["pt", "en"] as const).map((l) => (
+            <button
+              key={l}
+              onClick={() => {
+                const newPath = pathname.replace(`/${locale}`, `/${l}`);
+                router.push(newPath);
+              }}
+              className="font-mono text-xs px-3 py-1.5 rounded-full transition-all duration-200"
+              style={{
+                color:
+                  locale === l ? "var(--accent)" : "var(--foreground-muted)",
+                backgroundColor:
+                  locale === l ? "rgba(167,139,250,0.12)" : "transparent",
+                textShadow:
+                  locale === l ? "0 0 10px rgba(167,139,250,0.5)" : "none",
+                boxShadow:
+                  locale === l
+                    ? "inset 0 0 0 1px rgba(167,139,250,0.2)"
+                    : "none",
+              }}
+            >
+              {l.toUpperCase()}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Nav pill desktop */}

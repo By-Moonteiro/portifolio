@@ -4,7 +4,13 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { Mail } from "lucide-react";
 import { motion, easeOut } from "framer-motion";
 
-export default function Contact() {
+interface ContactProps {
+  title: string;
+  heading: string;
+  subheading: string;
+}
+
+export default function Contact({ title, heading, subheading }: ContactProps) {
   return (
     <section id="contato" className="relative z-10 py-20 px-6">
       <div className="max-w-5xl mx-auto flex flex-col gap-12">
@@ -14,7 +20,7 @@ export default function Contact() {
             className="font-mono text-sm tracking-widest whitespace-nowrap"
             style={{ color: "var(--accent)" }}
           >
-            ✦ CONTATO
+            ✦ {title}
           </span>
           <div
             className="flex-1 h-px"
@@ -51,7 +57,7 @@ export default function Contact() {
                 lineHeight: 1.1,
               }}
             >
-              Vamos conversar?
+              {heading}
             </motion.h2>
             <motion.p
               variants={{
@@ -65,7 +71,7 @@ export default function Contact() {
               className="font-mono text-sm leading-relaxed"
               style={{ color: "var(--foreground-muted)" }}
             >
-              Aberto a oportunidades e colaborações.
+              {subheading}
             </motion.p>
           </motion.div>
 
