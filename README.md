@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
 
-## Getting Started
+# Moonteiro — Portifólio
 
-First, run the development server:
+[![Next.js](https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Next Intl](https://img.shields.io/badge/next--intl-i18n-0A7EA4?style=for-the-badge)](https://next-intl.dev/)
+[![GitHub API](https://img.shields.io/badge/API-GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://docs.github.com/en/rest)
+[![Conventional Commits](https://img.shields.io/badge/Conventional_Commits-1.0.0-FE5196?style=for-the-badge&logo=git&logoColor=white)](https://www.conventionalcommits.org/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+</div>
+
+---
+
+## Sobre
+
+Portifólio pessoal desenvolvido com **Next.js + TypeScript**, com foco em organização de código, manutenção e evolução contínua.
+
+Meu posicionamento profissional é **full stack**, com **maior foco em backend**.  
+Este projeto representa minha camada de apresentação no frontend, priorizando clareza e estrutura.
+
+Acesse o portifólio online em: `https://moonteiro.vercel.app/`
+
+---
+
+## Preview
+
+<details open>
+<summary>Sessão do Hero</summary>
+
+<br/>
+
+<div align="center">
+  <img src="./public/preview/cover.png" alt="Portfolio Preview" width="600"/>
+</div>
+
+</details>
+
+## Principais pontos
+
+- Projeto bilíngue com **next-intl** (pt/en)
+- Integração com API externa do **GitHub**
+- Código organizado por responsabilidade
+- Commits padronizados com **Conventional Commits**
+- Base pronta para expansão de conteúdo e features
+
+---
+
+## Stack
+
+- Next.js 16
+- React 19
+- TypeScript 5.x
+- Tailwind CSS 4
+- Framer Motion
+- Lucide React / React Icons
+- next-intl
+
+---
+
+## Estrutura de pastas
+
+<details open>
+<summary>Ver estrutura de arquivos</summary>
+
+```
+.
+├── messages/            # textos de internacionalização (pt/en)
+├── public/
+│   ├── preview/         # Imagens de preview do portfólio
+│   ├── projetos/        # Logos dos projetos
+│   └── ...._cv.pdf      # CV em PDF
+├── src/
+│   ├── app/             # rotas e estrutura principal (App Router)
+│   ├── components/      # componentes reutilizáveis de UI
+│   ├── i18n/            # configuração de localização
+│   ├── lib/             # utilitários e integrações (ex.: API)
+│   └── proxy.ts         # camada de apoio para requests
+├── eslint.config.mjs
+├── next.config.ts
+├── package.json
+└── tsconfig.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+</details>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Como rodar localmente
 
-## Learn More
+```bash
+git clone https://github.com/By-Moonteiro/portifolio.git
+cd portifolio
+pnpm install
+pnpm dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Acesse: `http://localhost:3000`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+> Também funciona com `npm install` + `npm run dev`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Decisões de engenharia
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Estrutura modular para evitar acoplamento desnecessário
+- Separação entre conteúdo, UI e integrações
+- Uso de IA como apoio de produtividade e implementação, com adaptação manual para o contexto do projeto
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
