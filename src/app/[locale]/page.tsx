@@ -34,6 +34,11 @@ export default async function Home() {
       />
       <Projects
         title={tProjects("title")}
+        filters={{
+          all: tProjects("filters.all"),
+          fullstack: tProjects("filters.fullstack"),
+          backend: tProjects("filters.backend"),
+        }}
         viewDetails={tProjects("viewDetails")}
         repo={tProjects("repo")}
         demo={tProjects("demo")}

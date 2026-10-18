@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import ProjectCard from "./projects/ProjectCard";
 import type { Project } from "./projects/types";
 import { motion } from "framer-motion";
@@ -13,6 +14,11 @@ const containerVariants = {
 
 interface Props {
   title: string;
+  filters: {
+    all: string;
+    fullstack: string;
+    backend: string;
+  };
   viewDetails: string;
   repo: string;
   demo: string;
@@ -22,15 +28,19 @@ interface Props {
 
 export default function Projects({
   title,
+  filters,
   viewDetails,
   repo,
   demo,
   doneLabel,
   description,
 }: Props) {
+  const [filter, setFilter] = useState<Filter>("all");
+
   const projects: Project[] = [
     {
       name: "E-commerce API",
+      type: "backend",
       slug: "ecommerce",
       description,
       status: "DONE",
@@ -47,6 +57,17 @@ export default function Projects({
       repo: "",
     },
   ];
+
+  const FILTERS = [
+    { label: filters.all, value: "all" },
+    { label: filters.fullstack, value: "fullstack" },
+    { label: filters.backend, value: "backend" },
+  ] as const;
+
+  type Filter = (typeof FILTERS)[number]["value"];
+
+  const filtered =
+    filter === "all" ? projects : projects.filter((project) => project.type === filter);
 
   return (
     <>
@@ -66,6 +87,33 @@ export default function Projects({
             />
           </div>
 
+          {/* Filters */}
+          <div className="flex items-center gap-2 justify-center">
+            {FILTERS.map((item) => (
+              <button
+                key={item.value}
+                onClick={() => setFilter(item.value)}
+                className="font-mono text-xs px-4 py-1.5 rounded-full transition-all duration-200"
+                style={{
+                  border:
+                    item.value === filter
+                      ? "1px solid var(--accent)"
+                      : "1px solid var(--border)",
+                  color:
+                    item.value === filter
+                      ? "var(--accent)"
+                      : "var(--foreground-muted)",
+                  backgroundColor:
+                    item.value === filter
+                      ? "rgba(167,139,250,0.08)"
+                      : "transparent",
+                }}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+
           {/* Grid */}
           <motion.div
             variants={containerVariants}
@@ -74,7 +122,7 @@ export default function Projects({
             className="grid grid-cols-1 md:grid-cols-2 gap-4"
             viewport={{ once: true }}
           >
-            {projects.map((project) => (
+            {filtered.map((project) => (
               <ProjectCard
                 key={project.name}
                 project={project}

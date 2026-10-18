@@ -61,6 +61,11 @@
   },
   "projects": {
     "title": "PROJECTS",
+    "filters": {
+      "all": "All",
+      "fullstack": "Full Stack",
+      "backend": "Backend"
+    },
     "viewDetails": "View details",
     "repo": "Repo",
     "demo": "View Online",
