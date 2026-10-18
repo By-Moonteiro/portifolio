@@ -8,7 +8,6 @@ import { motion, easeOut } from "framer-motion";
 
 interface Props {
   project: Project;
-  onOpenModal: (project: Project) => void;
   viewDetails: string;
   repo: string;
   demo: string;
@@ -26,7 +25,6 @@ const cardVariants = {
 
 export default function ProjectCard({
   project,
-  onOpenModal,
   viewDetails,
   repo,
   demo,
@@ -168,28 +166,13 @@ export default function ProjectCard({
           )}
         </div>
 
-        {project.slug ? (
-          <Link
-            href={`/projects/${project.slug}`}
-            className="font-mono text-xs transition-all duration-200"
-            style={{ color: "var(--accent)" }}
-          >
-            ▶ {viewDetails}
-          </Link>
-        ) : (
-          <button
-            onClick={() => onOpenModal(project)}
-            className="font-mono text-xs transition-all duration-200"
-            style={{
-              color: "var(--accent)",
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-            }}
-          >
-            ▶ {viewDetails}
-          </button>
-        )}
+        <Link
+          href={`/projects/${project.slug}`}
+          className="font-mono text-xs transition-all duration-200"
+          style={{ color: "var(--accent)" }}
+        >
+          ▶ {viewDetails}
+        </Link>
       </div>
     </motion.div>
   );

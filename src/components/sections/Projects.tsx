@@ -1,8 +1,6 @@
 "use client";
 
-import { useState } from "react";
 import ProjectCard from "./projects/ProjectCard";
-import ProjectModal from "./projects/ProjectModal";
 import type { Project } from "./projects/types";
 import { motion } from "framer-motion";
 
@@ -15,109 +13,40 @@ const containerVariants = {
 
 interface Props {
   title: string;
-  filters: {
-    all: string;
-    fullstack: string;
-    backend: string;
-  };
   viewDetails: string;
   repo: string;
   demo: string;
   doneLabel: string;
-  descriptions: { astreon: string; nebula: string; ecommerce: string };
+  description: string;
 }
 
 export default function Projects({
   title,
-  filters,
   viewDetails,
   repo,
   demo,
   doneLabel,
-  descriptions,
+  description,
 }: Props) {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [filter, setFilter] = useState<Filter>("all");
-
   const projects: Project[] = [
     {
-      name: "Astreon",
-      type: "fullstack",
-      slug: "astreon",
-      description: descriptions.astreon,
-      status: "WIP",
+      name: "E-commerce API",
+      slug: "ecommerce",
+      description,
+      status: "DONE",
       year: 2026,
       stack: [
         "NestJS",
         "TypeScript",
         "PostgreSQL",
         "Prisma",
+        "Fastify",
+        "Zod",
         "Docker",
-        "React",
-        "Tailwind",
       ],
-      repo: "https://github.com/By-Moonteiro/astreon",
-      deploy: "https://astreon.app/",
-      details: {
-        description: descriptions.astreon,
-        problem: "Em breve.",
-        solution: "Em breve.",
-        impact: "Em breve.",
-      },
-    },
-    {
-      name: "E-commerce API",
-      type: "backend",
-      slug: "ecommerce",
-      description: descriptions.ecommerce,
-      status: "DONE",
-      year: 2026,
-      stack: ["NestJS", "TypeScript", "PostgreSQL", "Prisma", "Fastify", "Zod", "Docker"],
       repo: "",
-      details: {
-        description: descriptions.ecommerce,
-        problem: "Gerenciar catálogo, pedidos e estoque mantendo os dados consistentes.",
-        solution: "API REST modular com validação de dados e transações nas operações de pedidos.",
-        impact: "Projeto de portfólio focado em fundamentos e arquitetura backend.",
-      },
-    },
-    {
-      name: "Nebula",
-      slug: "nebula",
-      type: "other",
-      description: descriptions.nebula,
-      status: "WIP",
-      year: 2026,
-      stack: ["NestJS", "TypeScript", "Node", "Prisma", "JWT", "Fastify"],
-      repo: "https://github.com/By-Moonteiro/nebula",
-      details: {
-        description: descriptions.nebula,
-        problem: "Em breve.",
-        solution: "Em breve.",
-        impact: "Em breve.",
-      },
     },
   ];
-
-  const FILTERS = [
-    {
-      label: filters.all,
-      value: "all",
-    },
-    {
-      label: filters.fullstack,
-      value: "fullstack",
-    },
-    {
-      label: filters.backend,
-      value: "backend",
-    },
-  ] as const;
-
-  type Filter = (typeof FILTERS)[number]["value"];
-
-  const filtered =
-    filter === "all" ? projects : projects.filter((p) => p.type === filter);
 
   return (
     <>
@@ -137,33 +66,6 @@ export default function Projects({
             />
           </div>
 
-          {/* Filters */}
-          <div className="flex items-center gap-2 justify-center">
-            {FILTERS.map((f) => (
-              <button
-                key={f.value}
-                onClick={() => setFilter(f.value)}
-                className="font-mono text-xs px-4 py-1.5 rounded-full transition-all duration-200"
-                style={{
-                  border:
-                    f.value === filter
-                      ? "1px solid var(--accent)"
-                      : " 1px solid var(--border)",
-                  color:
-                    f.value === filter
-                      ? "var(--accent)"
-                      : "var(--foreground-muted)",
-                  backgroundColor:
-                    f.value === filter
-                      ? "rgba(167,139,250,0.08)"
-                      : "transparent",
-                }}
-              >
-                {f.label}
-              </button>
-            ))}
-          </div>
-
           {/* Grid */}
           <motion.div
             variants={containerVariants}
@@ -172,11 +74,10 @@ export default function Projects({
             className="grid grid-cols-1 md:grid-cols-2 gap-4"
             viewport={{ once: true }}
           >
-            {filtered.map((project) => (
+            {projects.map((project) => (
               <ProjectCard
                 key={project.name}
                 project={project}
-                onOpenModal={setSelectedProject}
                 viewDetails={viewDetails}
                 repo={repo}
                 demo={demo}
@@ -186,11 +87,6 @@ export default function Projects({
           </motion.div>
         </div>
       </section>
-
-      <ProjectModal
-        project={selectedProject}
-        onClose={() => setSelectedProject(null)}
-      />
     </>
   );
 }
