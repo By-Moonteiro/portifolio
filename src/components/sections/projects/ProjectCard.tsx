@@ -12,6 +12,7 @@ interface Props {
   viewDetails: string;
   repo: string;
   demo: string;
+  doneLabel: string;
 }
 
 const cardVariants = {
@@ -29,6 +30,7 @@ export default function ProjectCard({
   viewDetails,
   repo,
   demo,
+  doneLabel,
 }: Props) {
   return (
     <motion.div
@@ -70,7 +72,7 @@ export default function ProjectCard({
               }}
             />
           )}
-          {project.status === "WIP" ? "● WIP" : "✓ DONE"}
+          {project.status === "WIP" ? "● WIP" : `✓ ${doneLabel}`}
         </span>
         <span
           className="font-mono text-xs"
@@ -130,21 +132,23 @@ export default function ProjectCard({
         style={{ borderTop: "1px solid var(--border)" }}
       >
         <div className="flex items-center gap-4">
-          <a
-            href={project.repo}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 font-mono text-xs transition-colors duration-200"
-            style={{ color: "var(--foreground-muted)" }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.color = "var(--foreground)")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.color = "var(--foreground-muted)")
-            }
-          >
-            <FaGithub size={13} /> {repo}
-          </a>
+          {project.repo && (
+            <a
+              href={project.repo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 font-mono text-xs transition-colors duration-200"
+              style={{ color: "var(--foreground-muted)" }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.color = "var(--foreground)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color = "var(--foreground-muted)")
+              }
+            >
+              <FaGithub size={13} /> {repo}
+            </a>
+          )}
           {project.deploy && (
             <a
               href={project.deploy}

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" fill="none">
+  <defs>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientTransform="translate(600 210) rotate(90) scale(260 600)" gradientUnits="userSpaceOnUse"><stop stop-color="#24104A"/><stop offset="1" stop-color="#08080B"/></radialGradient>
+    <linearGradient id="accent" x1="390" y1="140" x2="810" y2="280" gradientUnits="userSpaceOnUse"><stop stop-color="#C4B5FD"/><stop offset="1" stop-color="#818CF8"/></linearGradient>
+  </defs>
+  <rect width="1200" height="420" rx="8" fill="#08080B"/>
+  <rect width="1200" height="420" rx="8" fill="url(#glow)"/>
+  <g stroke="#A78BFA" stroke-opacity=".25" stroke-width="1">
+    <path d="M80 90H1120M80 330H1120"/><path d="M150 60V360M1050 60V360" stroke-dasharray="2 10"/>
+  </g>
+  <g transform="translate(470 76)">
+    <path d="M50 25H210L230 70V220H30V70L50 25Z" stroke="url(#accent)" stroke-width="5" fill="#130D24"/>
+    <path d="M50 25L75 70H185L210 25" stroke="url(#accent)" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M80 112H180M80 142H180M80 172H145" stroke="#C4B5FD" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="30" cy="70" r="7" fill="#A78BFA"/><circle cx="230" cy="70" r="7" fill="#818CF8"/>
+  </g>
+  <text x="600" y="342" text-anchor="middle" fill="#F5F3FF" font-family="monospace" font-size="32" letter-spacing="8">E-COMMERCE API</text>
+  <text x="600" y="378" text-anchor="middle" fill="#A1A1AA" font-family="monospace" font-size="14" letter-spacing="5">NESTJS · POSTGRESQL · PRISMA</text>
+  <g fill="#C4B5FD"><circle cx="110" cy="120" r="3"/><circle cx="1080" cy="100" r="2"/><circle cx="1000" cy="285" r="3"/><circle cx="160" cy="290" r="2"/></g>
+  <rect x="1" y="1" width="1198" height="418" rx="7" stroke="#A78BFA" stroke-opacity=".28"/>
+</svg>

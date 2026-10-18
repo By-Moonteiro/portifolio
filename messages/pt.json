@@ -6,7 +6,6 @@
     "downloadCV": "Baixar CV",
     "viewProjects": "Ver Projetos"
   },
-
   "about": {
     "title": "SOBRE",
     "badge": "Em construção — rumo ao primeiro trabalho na área",
@@ -17,13 +16,11 @@
     "p3": "Meu objetivo é crescer como desenvolvedor backend ou full stack, fortalecendo base, arquitetura, integrações, testes e boas práticas de software.",
     "p3Keywords": "backend,full stack,base,arquitetura,integrações,testes,boas práticas"
   },
-
   "contact": {
     "title": "CONTATO",
     "heading": "Vamos conversar?",
     "subheading": "Aberto a oportunidades e colaborações."
   },
-
   "skills": {
     "title": "SKILLS",
     "learning": "Aprendendo",
@@ -37,7 +34,6 @@
       "tools": "Ferramentas"
     }
   },
-
   "experience": {
     "title": "EXPERIÊNCIA & FORMAÇÃO",
     "history": "Histórico Profissional",
@@ -51,7 +47,6 @@
     "degree": "Engenharia de Software",
     "period": "2026 → Em andamento"
   },
-
   "github": {
     "title": "GITHUB",
     "contributions": "Contribuições",
@@ -64,7 +59,6 @@
     "loading": "Carregando...",
     "contributionsTooltip": "contribuições"
   },
-
   "projects": {
     "title": "PROJETOS",
     "filters": {
@@ -81,10 +75,13 @@
       },
       "nebula": {
         "description": "CLI para scaffold de projetos com templates opinados — pule o boilerplate, comece pelo que importa."
+      },
+      "ecommerce": {
+        "description": "API REST para gerenciamento de usuários, categorias, produtos e pedidos, com validação de dados e controle transacional de estoque."
       }
-    }
+    },
+    "done": "Concluído"
   },
-
   "nav": {
     "home": "home",
     "projects": "projetos",
@@ -94,7 +91,6 @@
     "experience": "experiência",
     "contact": "contato"
   },
-
   "astreon": {
     "back": "voltar ao portfólio",
     "status": "WIP",
@@ -104,10 +100,18 @@
     "previewDesc": "Algumas telas do Astreon em funcionamento.",
     "preview": "Preview",
     "previewImages": [
-      { "alt": "Tela de login" },
-      { "alt": "Dashboard" },
-      { "alt": "Modo treino" },
-      { "alt": "Histórico" }
+      {
+        "alt": "Tela de login"
+      },
+      {
+        "alt": "Dashboard"
+      },
+      {
+        "alt": "Modo treino"
+      },
+      {
+        "alt": "Histórico"
+      }
     ],
     "problem": "O Problema",
     "problemDesc": "O Astreon nasceu de uma dor real e diária — fichas de treino anotadas no WhatsApp que se perdiam no histórico, sem registro de cargas, repetições ou evolução semana a semana. Sem controle de descanso entre séries, sem histórico de tempo treinando, sem saber o que funcionou.",
@@ -162,7 +166,10 @@
     "mvp": "MVP",
     "postMvp": "Pós-MVP",
     "mvpEntities": [
-      { "name": "User", "desc": "Quem usa o app. Nome, email, senha." },
+      {
+        "name": "User",
+        "desc": "Quem usa o app. Nome, email, senha."
+      },
       {
         "name": "WorkoutPlan",
         "desc": "Ficha de treino com período de vida e status."
@@ -229,7 +236,6 @@
     ],
     "viewRepo": "ver repositório"
   },
-
   "nebula": {
     "back": "voltar ao portfólio",
     "status": "WIP",
@@ -290,5 +296,53 @@
       }
     ],
     "viewRepo": "ver repositório"
+  },
+  "ecommerce": {
+    "back": "voltar ao portfólio",
+    "status": "Concluído",
+    "description": "API REST de e-commerce desenvolvida como projeto de estudo e portfólio, com foco em organização backend, validação de dados e persistência relacional.",
+    "repo": "Repositório",
+    "docs": "Documentação da API",
+    "problem": "O problema",
+    "problemDesc": "Um fluxo de e-commerce precisa manter usuários, catálogo, pedidos e estoque consistentes. Esta API reúne essas operações em endpoints organizados e aplica as regras principais no servidor, evitando confiar em valores enviados pelo cliente.",
+    "what": "O que é",
+    "whatDesc": "Uma API REST construída com NestJS e Fastify, usando PostgreSQL para persistência e Prisma para acesso aos dados. Os módulos são separados por domínio e os serviços dependem de contratos de repositório, mantendo a lógica de negócio separada da implementação de persistência.",
+    "features": "Funcionalidades",
+    "featureItems": [
+      "CRUD de usuários, categorias e produtos",
+      "Filtro de produtos por categoria e parte do nome",
+      "Criação e consulta de pedidos, com filtro opcional por usuário",
+      "Cálculo do total no servidor e registro do preço unitário no momento da compra",
+      "Baixa de estoque na criação do pedido e reposição no cancelamento",
+      "Validação de dados e variáveis de ambiente com Zod",
+      "Hash de senhas com Argon2 e tratamento global de exceções"
+    ],
+    "architecture": "Arquitetura",
+    "architectureDesc": "A aplicação é organizada em módulos de domínio e utiliza o padrão Repository para separar os serviços da persistência. As operações de pedido utilizam transações para manter pedido e estoque consistentes.",
+    "flow": "Controller → Service → Abstract Repository → Prisma Repository → PostgreSQL",
+    "limitations": "Escopo atual",
+    "limitationsDesc": "O projeto não implementa autenticação nem autorização. Foi desenvolvido para demonstrar conceitos de backend e não deve ser usado em produção com dados reais sem as proteções necessárias.",
+    "endpoints": "Endpoints principais",
+    "endpointsDesc": "Principais operações disponíveis na API, agrupadas por recurso. Consulte a documentação interativa para ver os parâmetros e os formatos de resposta.",
+    "endpointGroups": [
+      {
+        "name": "Usuários",
+        "routes": "POST /users · GET /users · GET /users/:id · PUT /users/:id · DELETE /users/:id"
+      },
+      {
+        "name": "Categorias",
+        "routes": "POST /categories · GET /categories · GET /categories/:id · PATCH /categories/:id · DELETE /categories/:id"
+      },
+      {
+        "name": "Produtos",
+        "routes": "POST /products · GET /products · GET /products/:id · PATCH /products/:id · DELETE /products/:id"
+      },
+      {
+        "name": "Pedidos",
+        "routes": "POST /orders · GET /orders · GET /orders/:id · PATCH /orders/:id/cancel"
+      }
+    ],
+    "rules": "Regras de negócio",
+    "rulesDesc": "Os pedidos são calculados no servidor, preservam o preço unitário no momento da compra e atualizam o estoque dentro de transações. O cancelamento só repõe o estoque quando o pedido é efetivamente cancelado, evitando reposições duplicadas."
   }
 }

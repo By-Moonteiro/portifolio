@@ -6,7 +6,6 @@
     "downloadCV": "Download CV",
     "viewProjects": "View Projects"
   },
-
   "about": {
     "title": "ABOUT",
     "badge": "Under construction — heading to my first job in the field",
@@ -17,13 +16,11 @@
     "p3": "My goal is to grow as a backend or full stack developer, strengthening fundamentals, architecture, integrations, tests and software best practices.",
     "p3Keywords": "backend,full stack,fundamentals,architecture,integrations,tests,best practices"
   },
-
   "contact": {
     "title": "CONTACT",
     "heading": "Let's talk?",
     "subheading": "Open to opportunities and collaborations."
   },
-
   "skills": {
     "title": "SKILLS",
     "learning": "Learning",
@@ -37,7 +34,6 @@
       "tools": "Tools"
     }
   },
-
   "experience": {
     "title": "EXPERIENCE & EDUCATION",
     "history": "Work History",
@@ -51,7 +47,6 @@
     "degree": "Software Engineering",
     "period": "2026 → In progress"
   },
-
   "github": {
     "title": "GITHUB",
     "contributions": "Contributions",
@@ -64,7 +59,6 @@
     "loading": "Loading...",
     "contributionsTooltip": "contributions"
   },
-
   "projects": {
     "title": "PROJECTS",
     "filters": {
@@ -81,10 +75,13 @@
       },
       "nebula": {
         "description": "CLI for project scaffolding with opinionated templates — skip the boilerplate, start with what matters."
+      },
+      "ecommerce": {
+        "description": "REST API for managing users, categories, products, and orders, with data validation and transactional stock handling."
       }
-    }
+    },
+    "done": "Completed"
   },
-
   "nav": {
     "home": "home",
     "projects": "projects",
@@ -94,7 +91,6 @@
     "experience": "experience",
     "contact": "contact"
   },
-
   "astreon": {
     "back": "back to portfolio",
     "status": "WIP",
@@ -104,10 +100,18 @@
     "preview": "Preview",
     "previewDesc": "Some screens of Astreon in action.",
     "previewImages": [
-      { "alt": "Login screen" },
-      { "alt": "Dashboard" },
-      { "alt": "Workout mode" },
-      { "alt": "History" }
+      {
+        "alt": "Login screen"
+      },
+      {
+        "alt": "Dashboard"
+      },
+      {
+        "alt": "Workout mode"
+      },
+      {
+        "alt": "History"
+      }
     ],
     "problem": "The Problem",
     "problemDesc": "Astreon was born from a real daily pain — workout sheets noted on WhatsApp that got lost in the history, with no record of weights, reps or week-to-week progress. No rest timer between sets, no training time history, no way to know what worked.",
@@ -162,7 +166,10 @@
     "mvp": "MVP",
     "postMvp": "Post-MVP",
     "mvpEntities": [
-      { "name": "User", "desc": "Who uses the app. Name, email, password." },
+      {
+        "name": "User",
+        "desc": "Who uses the app. Name, email, password."
+      },
       {
         "name": "WorkoutPlan",
         "desc": "Workout sheet with lifetime period and status."
@@ -229,7 +236,6 @@
     ],
     "viewRepo": "view repository"
   },
-
   "nebula": {
     "back": "back to portfolio",
     "status": "WIP",
@@ -290,5 +296,53 @@
       }
     ],
     "viewRepo": "view repository"
+  },
+  "ecommerce": {
+    "back": "back to portfolio",
+    "status": "Completed",
+    "description": "E-commerce REST API built as a learning and portfolio project, focused on backend organization, data validation, and relational persistence.",
+    "repo": "Repository",
+    "docs": "API documentation",
+    "problem": "The problem",
+    "problemDesc": "An e-commerce workflow needs to keep users, catalog, orders, and stock consistent. This API brings these operations together through organized endpoints and applies core rules on the server instead of trusting values sent by the client.",
+    "what": "What it is",
+    "whatDesc": "A REST API built with NestJS and Fastify, using PostgreSQL for persistence and Prisma for data access. Modules are separated by domain, and services depend on repository contracts to keep business logic separate from persistence implementation.",
+    "features": "Features",
+    "featureItems": [
+      "CRUD for users, categories, and products",
+      "Filter products by category and partial name",
+      "Create and retrieve orders, with optional user filtering",
+      "Server-side total calculation and unit-price snapshot at purchase time",
+      "Stock deduction when creating an order and restoration on cancellation",
+      "Data and environment validation with Zod",
+      "Password hashing with Argon2 and global exception handling"
+    ],
+    "architecture": "Architecture",
+    "architectureDesc": "The application is organized into domain modules and uses the Repository pattern to separate services from persistence. Order operations use transactions to keep order and stock data consistent.",
+    "flow": "Controller → Service → Abstract Repository → Prisma Repository → PostgreSQL",
+    "limitations": "Current scope",
+    "limitationsDesc": "The project does not implement authentication or authorization. It was built to demonstrate backend concepts and should not be used in production with real data without the necessary protections.",
+    "endpoints": "Key endpoints",
+    "endpointsDesc": "Main operations available in the API, grouped by resource. Check the interactive documentation for parameters and response formats.",
+    "endpointGroups": [
+      {
+        "name": "Users",
+        "routes": "POST /users · GET /users · GET /users/:id · PUT /users/:id · DELETE /users/:id"
+      },
+      {
+        "name": "Categories",
+        "routes": "POST /categories · GET /categories · GET /categories/:id · PATCH /categories/:id · DELETE /categories/:id"
+      },
+      {
+        "name": "Products",
+        "routes": "POST /products · GET /products · GET /products/:id · PATCH /products/:id · DELETE /products/:id"
+      },
+      {
+        "name": "Orders",
+        "routes": "POST /orders · GET /orders · GET /orders/:id · PATCH /orders/:id/cancel"
+      }
+    ],
+    "rules": "Business rules",
+    "rulesDesc": "Order totals are calculated on the server, unit prices are preserved at purchase time, and stock changes are handled within transactions. Stock is restored only when an order is successfully cancelled, preventing duplicate restocking."
   }
 }

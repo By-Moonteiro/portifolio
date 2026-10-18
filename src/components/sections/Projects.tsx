@@ -23,7 +23,8 @@ interface Props {
   viewDetails: string;
   repo: string;
   demo: string;
-  descriptions: { astreon: string; nebula: string };
+  doneLabel: string;
+  descriptions: { astreon: string; nebula: string; ecommerce: string };
 }
 
 export default function Projects({
@@ -32,6 +33,7 @@ export default function Projects({
   viewDetails,
   repo,
   demo,
+  doneLabel,
   descriptions,
 }: Props) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -61,6 +63,22 @@ export default function Projects({
         problem: "Em breve.",
         solution: "Em breve.",
         impact: "Em breve.",
+      },
+    },
+    {
+      name: "E-commerce API",
+      type: "backend",
+      slug: "ecommerce",
+      description: descriptions.ecommerce,
+      status: "DONE",
+      year: 2026,
+      stack: ["NestJS", "TypeScript", "PostgreSQL", "Prisma", "Fastify", "Zod", "Docker"],
+      repo: "",
+      details: {
+        description: descriptions.ecommerce,
+        problem: "Gerenciar catálogo, pedidos e estoque mantendo os dados consistentes.",
+        solution: "API REST modular com validação de dados e transações nas operações de pedidos.",
+        impact: "Projeto de portfólio focado em fundamentos e arquitetura backend.",
       },
     },
     {
@@ -162,6 +180,7 @@ export default function Projects({
                 viewDetails={viewDetails}
                 repo={repo}
                 demo={demo}
+                doneLabel={doneLabel}
               />
             ))}
           </motion.div>
