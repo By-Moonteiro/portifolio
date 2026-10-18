@@ -3,7 +3,7 @@
 import { FaGithub } from "react-icons/fa";
 import { ExternalLink } from "lucide-react";
 import type { Project } from "./types";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { motion, easeOut } from "framer-motion";
 
 interface Props {
