@@ -67,7 +67,9 @@ export default function Projects({
   type Filter = (typeof FILTERS)[number]["value"];
 
   const filtered =
-    filter === "all" ? projects : projects.filter((project) => project.type === filter);
+    filter === "all"
+      ? projects
+      : projects.filter((project) => project.type === filter);
 
   return (
     <>
