@@ -33,10 +33,6 @@ export default function EcommerceProjectPage() {
     routes: string;
   }[];
 
-  // Add the public URLs here after the repository and deployment are published.
-  const repositoryUrl = "";
-  const documentationUrl = "";
-
   return (
     <main className="relative z-10 min-h-screen px-6 py-24">
       <div className="max-w-3xl mx-auto flex flex-col gap-16">
@@ -104,34 +100,6 @@ export default function EcommerceProjectPage() {
           >
             {t("description")}
           </motion.p>
-
-          {(repositoryUrl || documentationUrl) && (
-            <motion.div {...fadeUp(0.5)} className="flex flex-wrap gap-5">
-              {repositoryUrl && (
-                <a
-                  href={repositoryUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 font-mono text-xs"
-                  style={{ color: "var(--foreground-muted)" }}
-                >
-                  <FaGithub size={13} />
-                  {t("repo")}
-                </a>
-              )}
-              {documentationUrl && (
-                <a
-                  href={documentationUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-mono text-xs"
-                  style={{ color: "var(--foreground-muted)" }}
-                >
-                  {t("docs")}
-                </a>
-              )}
-            </motion.div>
-          )}
 
           <motion.div {...fadeUp(0.6)} className="flex flex-wrap gap-2">
             {stack.map((tech) => (
@@ -271,18 +239,16 @@ export default function EcommerceProjectPage() {
             <ArrowLeft size={13} />
             {t("back")}
           </Link>
-          {repositoryUrl && (
-            <a
-              href={repositoryUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 font-mono text-xs"
-              style={{ color: "var(--foreground-muted)" }}
-            >
-              <FaGithub size={13} />
-              {t("repo")}
-            </a>
-          )}
+          <a
+            href="https://github.com/By-Moonteiro/e-commerce-api"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 font-mono text-xs"
+            style={{ color: "var(--foreground-muted)" }}
+          >
+            <FaGithub size={13} />
+            {t("repo")}
+          </a>
         </div>
       </div>
     </main>

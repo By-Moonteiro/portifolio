@@ -54,7 +54,8 @@ export default function Projects({
         "Zod",
         "Docker",
       ],
-      repo: "",
+      repo: "https://github.com/By-Moonteiro/e-commerce-api",
+      deploy: "https://e-commerce-backend-782l.onrender.com/docs",
     },
   ];
 
