@@ -69,6 +69,9 @@
     "items": {
       "ecommerce": {
         "description": "REST API for managing users, categories, products, and orders, with data validation and transactional stock handling."
+      },
+      "bookshelf": {
+        "description": "Full Stack application for managing a personal library, allowing users to add books, track reading progress, and record ratings."
       }
     },
     "done": "Completed"
@@ -129,5 +132,59 @@
     ],
     "rules": "Business rules",
     "rulesDesc": "Order totals are calculated on the server, unit prices are preserved at purchase time, and stock changes are handled within transactions. Stock is restored only when an order is successfully cancelled, preventing duplicate restocking."
+  },
+  "bookshelf": {
+    "back": "back to portfolio",
+    "status": "Completed",
+    "description": "Full Stack application for managing a personal reading list, allowing users to add books, track reading progress, and record ratings.",
+    "objective": "Project Goal",
+    "objectiveDesc": "The project was developed to deepen frontend development knowledge, particularly with React and Next.js, while gaining practical experience integrating independent applications. It also involved working with HTTP communication, form management, data validation, and frontend-backend integration.",
+    "repo": "Repository",
+
+    "problem": "The Problem",
+    "problemDesc": "Keeping a reading list organized can become challenging as new books are added. Bookshelf centralizes this management in a single application, allowing users to track reading status and keep book information organized.",
+
+    "what": "What is Bookshelf",
+    "whatDesc": "A Full Stack application composed of two independent applications: a frontend built with Next.js and a REST API developed with NestJS. It allows users to manage a personal book collection through creation, retrieval, updating, and deletion operations.",
+
+    "features": "Features",
+    "featureItems": [
+      "Create, list, update, and delete books",
+      "Register book titles, authors, reading status, and ratings",
+      "Filter books by reading status through URL parameters",
+      "Reusable form for creating and editing books",
+      "Confirmation before deleting a book",
+      "Loading states and error handling in book listings",
+      "Data validation with Zod on both frontend and backend",
+      "Interactive API documentation with OpenAPI and Scalar"
+    ],
+
+    "frontend": "Frontend",
+    "frontendDesc": "Built with Next.js 16, React 19, and TypeScript, using the App Router for page organization. The interface uses Tailwind CSS and shadcn/ui components. Forms are managed with React Hook Form and validated with Zod. HTTP requests are centralized in a service layer using Axios.",
+
+    "backend": "Backend",
+    "backendDesc": "REST API developed with NestJS 12 and Fastify, using PostgreSQL for persistence and Prisma for database access. The application is organized by domain modules and uses the Repository Pattern to separate business logic from persistence implementation. Data validation is handled by Zod integrated with NestJS StandardSchemaValidationPipe.",
+
+    "endpoints": "Main Endpoints",
+    "endpointsDesc": "The API provides CRUD operations for book management, as well as filtering capabilities based on reading status.",
+
+    "endpointGroups": [
+      {
+        "name": "Books",
+        "routes": "POST /books · GET /books · GET /books/:id · PATCH /books/:id · DELETE /books/:id"
+      },
+      {
+        "name": "Filtering",
+        "routes": "GET /books?status=WANT_TO_READ (or READING or READ)"
+      }
+    ],
+
+    "architecture": "Architecture",
+    "architectureDesc": "The frontend and API are independent applications. The frontend uses a service layer to centralize HTTP requests, while the backend organizes responsibilities by module and uses the Repository Pattern to decouple services from persistence.",
+
+    "flow": "Next.js → Service Layer → Axios → NestJS Controller → Service → Repository → Prisma → PostgreSQL",
+
+    "limitations": "Current Scope",
+    "limitationsDesc": "The project does not implement authentication or authorization. The book listing does not include pagination, and automated tests specific to the book module have not yet been implemented. Therefore, the application should not be used in a public environment with data requiring access control until the necessary security measures are implemented."
   }
 }

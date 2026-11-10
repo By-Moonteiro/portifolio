@@ -44,6 +44,7 @@ export default async function Home() {
         demo={tProjects("demo")}
         doneLabel={tProjects("done")}
         description={tProjects("items.ecommerce.description")}
+        bookshelfDescription={tProjects("items.bookshelf.description")}
       />
       <Skills
         title={tSkills("title")}

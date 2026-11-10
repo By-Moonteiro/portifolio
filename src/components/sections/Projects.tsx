@@ -24,6 +24,7 @@ interface Props {
   demo: string;
   doneLabel: string;
   description: string;
+  bookshelfDescription: string;
 }
 
 export default function Projects({
@@ -34,10 +35,30 @@ export default function Projects({
   demo,
   doneLabel,
   description,
+  bookshelfDescription,
 }: Props) {
   const [filter, setFilter] = useState<Filter>("all");
 
   const projects: Project[] = [
+    {
+      name: "Bookshelf",
+      type: "fullstack",
+      slug: "bookshelf",
+      description: bookshelfDescription,
+      status: "DONE",
+      year: 2026,
+      stack: [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "NestJS",
+        "PostgreSQL",
+        "Prisma",
+        "Tailwind CSS",
+        "Zod",
+      ],
+      repo: "https://github.com/By-Moonteiro/bookshelf-project",
+    },
     {
       name: "E-commerce API",
       type: "backend",

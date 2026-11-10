@@ -69,6 +69,9 @@
     "items": {
       "ecommerce": {
         "description": "API REST para gerenciamento de usuários, categorias, produtos e pedidos, com validação de dados e controle transacional de estoque."
+      },
+      "bookshelf": {
+        "description": "Aplicação Full Stack para gerenciamento de uma biblioteca pessoal, permitindo cadastrar livros, acompanhar o progresso de leitura e registrar avaliações."
       }
     },
     "done": "Concluído"
@@ -129,5 +132,59 @@
     ],
     "rules": "Regras de negócio",
     "rulesDesc": "Os pedidos são calculados no servidor, preservam o preço unitário no momento da compra e atualizam o estoque dentro de transações. O cancelamento só repõe o estoque quando o pedido é efetivamente cancelado, evitando reposições duplicadas."
+  },
+  "bookshelf": {
+    "back": "voltar ao portfólio",
+    "status": "Concluído",
+    "description": "Aplicação Full Stack para gerenciamento de uma lista de leitura pessoal, permitindo cadastrar livros, acompanhar o progresso de leitura e registrar avaliações.",
+    "objective": "Objetivo do projeto",
+    "objectiveDesc": "O projeto foi desenvolvido com o objetivo de aprofundar os conhecimentos em desenvolvimento frontend, especialmente com React e Next.js, além de praticar a integração entre aplicações independentes. A proposta também envolveu trabalhar com comunicação HTTP, gerenciamento de formulários, validação de dados e integração entre frontend e backend.",
+    "repo": "Repositório",
+
+    "problem": "O problema",
+    "problemDesc": "Manter uma lista de leitura organizada pode se tornar complicado conforme novos livros são adicionados. O Bookshelf centraliza esse gerenciamento em uma aplicação, permitindo acompanhar o status de leitura e manter as informações de cada livro organizadas.",
+
+    "what": "O que é",
+    "whatDesc": "Uma aplicação Full Stack composta por duas aplicações independentes: um frontend desenvolvido com Next.js e uma API REST construída com NestJS. A aplicação permite gerenciar uma lista pessoal de livros, com operações de cadastro, consulta, edição e exclusão.",
+
+    "features": "Funcionalidades",
+    "featureItems": [
+      "Cadastro, listagem, edição e exclusão de livros",
+      "Registro de título, autor, status de leitura e avaliação",
+      "Filtro de livros por status de leitura, controlado pela URL",
+      "Formulário reutilizado para criação e edição de livros",
+      "Confirmação antes da exclusão de um livro",
+      "Estados de carregamento e tratamento de erros na listagem",
+      "Validação de dados com Zod no frontend e backend",
+      "Documentação interativa da API com OpenAPI e Scalar"
+    ],
+
+    "frontend": "Frontend",
+    "frontendDesc": "Desenvolvido com Next.js 16, React 19 e TypeScript, utilizando o App Router para organização das páginas. A interface utiliza Tailwind CSS e componentes do shadcn/ui. Os formulários são gerenciados com React Hook Form e validados com Zod. As requisições HTTP são centralizadas em uma camada de serviços utilizando Axios.",
+
+    "backend": "Backend",
+    "backendDesc": "API REST desenvolvida com NestJS 12 e Fastify, utilizando PostgreSQL para persistência e Prisma para acesso aos dados. A aplicação é organizada por módulo de domínio e utiliza o padrão Repository para separar a lógica de negócio da implementação de persistência. A validação utiliza Zod integrado ao StandardSchemaValidationPipe do NestJS.",
+
+    "endpoints": "Endpoints principais",
+    "endpointsDesc": "A API disponibiliza operações CRUD para gerenciamento dos livros, além de permitir filtrar a listagem pelo status de leitura.",
+
+    "endpointGroups": [
+      {
+        "name": "Livros",
+        "routes": "POST /books · GET /books · GET /books/:id · PATCH /books/:id · DELETE /books/:id"
+      },
+      {
+        "name": "Filtro",
+        "routes": "GET /books?status=WANT_TO_READ (ou READING ou READ)"
+      }
+    ],
+
+    "architecture": "Arquitetura",
+    "architectureDesc": "O frontend e a API são aplicações independentes. O frontend utiliza uma camada de serviços para centralizar as requisições HTTP, enquanto o backend organiza as responsabilidades por módulo e utiliza o padrão Repository para desacoplar os serviços da persistência.",
+
+    "flow": "Next.js → Service Layer → Axios → NestJS Controller → Service → Repository → Prisma → PostgreSQL",
+
+    "limitations": "Escopo atual",
+    "limitationsDesc": "O projeto não implementa autenticação nem autorização. A listagem não possui paginação e ainda não existem testes automatizados específicos para o módulo de livros. Por isso, a aplicação não deve ser utilizada em um ambiente público com dados que exijam controle de acesso sem a implementação das proteções necessárias."
   }
 }
