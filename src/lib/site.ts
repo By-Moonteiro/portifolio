@@ -1,1 +1,1 @@
-export const SITE_URL = "https://moonteiro.vercel.app";
+export const SITE_URL = "https://moonteiro.com.br";
