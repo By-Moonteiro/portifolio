@@ -49,7 +49,7 @@ export async function generateMetadata({
       images: [{ url: "/preview/cover.png", width: 1878, height: 909 }],
     },
     twitter: { card: "summary_large_image" },
-    verification: { google: "41UafxBYxrG3qxejDvBjiuZaTej34jBOKeIQbuzFI_0" },
+    verification: { google: "WWalqW_HEzZYOkyQQpoTmjfwLTYXKmKC5iLHSD2FJMA" },
   };
 }
 
