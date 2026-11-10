@@ -47,13 +47,10 @@ export default async function Home() {
       />
       <Skills
         title={tSkills("title")}
-        learning={tSkills("learning")}
-        learningSubtitle={tSkills("learningSubtitle")}
+        hint={tSkills("hint")}
         categories={{
-          languages: tSkills("categories.languages"),
           backend: tSkills("categories.backend"),
           frontend: tSkills("categories.frontend"),
-          database: tSkills("categories.database"),
           infra: tSkills("categories.infra"),
           tools: tSkills("categories.tools"),
         }}

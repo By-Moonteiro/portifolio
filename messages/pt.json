@@ -23,14 +23,11 @@
   },
   "skills": {
     "title": "SKILLS",
-    "learning": "Aprendendo",
-    "learningSubtitle": "em progresso ativo",
+    "hint": "arraste para girar",
     "categories": {
-      "languages": "Linguagens de Programação",
       "backend": "Backend",
       "frontend": "Frontend",
-      "database": "Banco de Dados",
-      "infra": "Infra & Deploy",
+      "infra": "Infra e deploy",
       "tools": "Ferramentas"
     }
   },
