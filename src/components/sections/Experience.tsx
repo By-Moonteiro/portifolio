@@ -1,15 +1,15 @@
 "use client";
 
 import { motion, easeOut } from "framer-motion";
+import { FiExternalLink } from "react-icons/fi";
 
 interface Courses {
   name: string;
   institution: string;
   period: string;
+  link: string;
   done: boolean;
 }
-
-const certificationsList: Courses[] = [];
 
 interface ExperienceProps {
   title: string;
@@ -38,22 +38,35 @@ export default function Experience({
 }: ExperienceProps) {
   const CoursesInProgress: Courses[] = [
     {
-      name: "HTML e CSS para Iniciantes",
+      name: "React com Typescript",
       institution: "Origamid",
       period: "Em andamento",
       done: false,
-    },
-    {
-      name: "React Completo",
-      institution: "Origamid",
-      period: "Em andamento",
-      done: false,
+      link: "",
     },
     {
       name: "Tailwind CSS",
       institution: "Origamid",
       period: "Em andamento",
       done: false,
+      link: "",
+    },
+    {
+      name: "Next.js",
+      institution: "Origamid",
+      period: "Em andamento",
+      done: false,
+      link: "",
+    },
+  ];
+
+  const certificationsList: Courses[] = [
+    {
+      name: "React Completo",
+      institution: "Origamid",
+      period: "2026",
+      done: true,
+      link: "https://www.origamid.com/certificate/a96694cf94",
     },
   ];
 
@@ -279,9 +292,13 @@ export default function Experience({
 
                 <div className="flex flex-col gap-2">
                   {certificationsList.map((cert) => (
-                    <span
+                    <a
                       key={cert.name}
-                      className="font-mono text-xs transition-colors duration-200 cursor-default"
+                      href={cert.link}
+                      target="__blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Ver certificado de ${cert.name}`}
+                      className="font-mono text-xs transition-colors duration-200 cursor-default flex"
                       style={{ color: "var(--foreground-muted)" }}
                       onMouseEnter={(e) =>
                         (e.currentTarget.style.color = "#ffffff")
@@ -291,8 +308,13 @@ export default function Experience({
                           "var(--foreground-muted)")
                       }
                     >
-                      ▸ {cert.name} - {cert.institution} - {cert.period}
-                    </span>
+                      ▸ {cert.name} - {cert.institution} - {cert.period}{" "}
+                      <FiExternalLink
+                        className="ml-1.5"
+                        size={14}
+                        aria-hidden="true"
+                      />
+                    </a>
                   ))}
                 </div>
               </div>
