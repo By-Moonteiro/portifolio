@@ -38,21 +38,14 @@ export default function Experience({
 }: ExperienceProps) {
   const CoursesInProgress: Courses[] = [
     {
-      name: "React com Typescript",
+      name: "UI Design Para Iniciantes",
       institution: "Origamid",
       period: "Em andamento",
       done: false,
       link: "",
     },
     {
-      name: "Tailwind CSS",
-      institution: "Origamid",
-      period: "Em andamento",
-      done: false,
-      link: "",
-    },
-    {
-      name: "Next.js",
+      name: "Html e CSS",
       institution: "Origamid",
       period: "Em andamento",
       done: false,
@@ -67,6 +60,13 @@ export default function Experience({
       period: "2026",
       done: true,
       link: "https://www.origamid.com/certificate/a96694cf94",
+    },
+    {
+      name: "React com Typescript",
+      institution: "Origamid",
+      period: "2026",
+      done: true,
+      link: "https://www.origamid.com/certificate/87587311f1",
     },
   ];
 
