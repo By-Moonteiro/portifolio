@@ -31,21 +31,10 @@ export async function generateMetadata({
   return {
     metadataBase: new URL(SITE_URL),
     title: {
-      default: `Wagner Moonteiro | ${t("role")}`,
-      template: "%s | Wagner Moonteiro",
+      default: `Moonteiro | ${t("role")}`,
+      template: "%s | Moonteiro",
     },
     description: t("description"),
-    keywords: [
-      "Wagner Moonteiro",
-      "Wagner L. Monteiro",
-      "Wagner Monteiro",
-      "Moonteiro",
-      "Desenvolvedor Full Stack",
-      "Desenvolvedor Backend",
-      "TypeScript",
-      "NestJS",
-      "React",
-    ],
     alternates: {
       canonical: `/${locale}`,
       languages: { pt: "/pt", en: "/en", "x-default": "/pt" },
@@ -53,9 +42,9 @@ export async function generateMetadata({
     openGraph: {
       type: "website",
       url: `/${locale}`,
-      siteName: "Wagner Moonteiro",
+      siteName: "Moonteiro",
       locale: locale === "pt" ? "pt_BR" : "en_US",
-      title: `Wagner Moonteiro | ${t("role")}`,
+      title: `Moonteiro | ${t("role")}`,
       description: t("description"),
       images: [{ url: "/preview/cover.png", width: 1878, height: 909 }],
     },
@@ -90,14 +79,32 @@ export default async function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Person",
-              name: "Wagner L. Monteiro",
-              alternateName: ["Moonteiro", "Wagner Moonteiro"],
-              jobTitle: "Full Stack Developer",
-              url: SITE_URL,
-              sameAs: [
-                "https://github.com/By-Moonteiro",
-                "https://www.linkedin.com/in/moonteiro/",
+              "@graph": [
+                {
+                  "@type": "Person",
+                  "@id": `${SITE_URL}/#person`,
+                  name: "Moonteiro",
+                  alternateName: [
+                    "Wagner Moonteiro",
+                    "Wagner L. Monteiro",
+                    "Wagner Monteiro",
+                  ],
+                  jobTitle: "Backend & Full Stack Developer",
+                  url: SITE_URL,
+                  sameAs: [
+                    "https://github.com/By-Moonteiro",
+                    "https://www.linkedin.com/in/moonteiro/",
+                  ],
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": `${SITE_URL}/#website`,
+                  name: "Moonteiro",
+                  url: `${SITE_URL}/`,
+                  publisher: {
+                    "@id": `${SITE_URL}/#person`,
+                  },
+                },
               ],
             }),
           }}
